@@ -20,7 +20,7 @@ namespace Model
         [Description("Цена")]
         public decimal Price { get; set; }
 
-        [Description("Описание"), DataNotEmpty]
+        [Description("Описание")]
         public string Description { get; set; }
 
         public int CompareTo(Sentence other)

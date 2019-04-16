@@ -9,6 +9,8 @@ namespace Workstation
     public partial class MainForm : Form
     {
         private Root _root = new Root();
+        public static ServicesForm ServicesForm;
+        public static ClientsForm ClientsForm;
 
         public MainForm()
         {
@@ -24,12 +26,17 @@ namespace Workstation
         private void MainForm_Load(object sender, EventArgs e)
         {
             CenterToScreen();
+            // загрузка базы
             var fileName = Path.ChangeExtension(Application.ExecutablePath, ".bin");
             if (File.Exists(fileName))
             {
                 _root = SaverLoader.LoadFromFile(fileName);
                 _root.RegistryTables();
             }
+            // подгрузка заставки
+            pnlContainer.Controls.Clear();
+            var mainPanel = new MainPanel(_root);
+            pnlContainer.Controls.Add(mainPanel);
         }
 
         private void tsmiDictionaries_DropDownOpening(object sender, EventArgs e)
@@ -52,6 +59,23 @@ namespace Workstation
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaverLoader.SaveToFile(Path.ChangeExtension(Application.ExecutablePath, ".bin"), _root);
+        }
+
+        private void tsmiServices_Click(object sender, EventArgs e)
+        {
+            if (ServicesForm == null) ServicesForm = new ServicesForm(_root);
+            ServicesForm.Show();
+        }
+
+        private void tsmiClients_Click(object sender, EventArgs e)
+        {
+            if (ClientsForm == null) ClientsForm = new ClientsForm(_root);
+            ClientsForm.Show();
+        }
+
+        private void tsmiExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

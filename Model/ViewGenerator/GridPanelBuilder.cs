@@ -71,7 +71,7 @@ namespace ViewGenerator
                 // создаём пустой объект требуемого типа
                 var item = Activator.CreateInstance(userClass.GetType());
                 // вызываем диалог для заполнения свойств объекта
-                var frm = PropertyPanelBuilder.ShowPropertyFormDialog(userModel, item);
+                var frm = PropertyPanelBuilder.ShowPropertyFormDialog(userModel, item, userControl.Font.Name, userControl.Font.Size);
                 // если не была нажата клавиша "Ввод", выходим
                 if (frm.DialogResult != DialogResult.OK) return;
                 // формируем данные для вызова метода Add коллекции объектов:
@@ -110,7 +110,7 @@ namespace ViewGenerator
                 // получаем ссылку на редактируемый элемент
                 var item = collection.ElementAt(listView.SelectedIndices[0]);
                 // вызываем диалог для заполнения свойств объекта
-                var frm = PropertyPanelBuilder.ShowPropertyFormDialog(userModel, item);
+                var frm = PropertyPanelBuilder.ShowPropertyFormDialog(userModel, item, userControl.Font.Name, userControl.Font.Size);
                 // если не была нажата клавиша "Ввод", выходим
                 if (frm.DialogResult != DialogResult.OK) return;
                 listView.Invalidate(); // просим обновить вид

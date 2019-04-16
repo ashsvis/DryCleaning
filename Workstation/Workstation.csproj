@@ -46,16 +46,40 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientsForm.Designer.cs">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MainPanel.Designer.cs">
+      <DependentUpon>MainPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServicesForm.Designer.cs">
+      <DependentUpon>ServicesForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ClientsForm.resx">
+      <DependentUpon>ClientsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainPanel.resx">
+      <DependentUpon>MainPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -66,6 +90,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ServicesForm.resx">
+      <DependentUpon>ServicesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

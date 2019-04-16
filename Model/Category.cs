@@ -14,7 +14,7 @@ namespace Model
         [Description("Ассортимент"), DataLookup("IdService", "Services")]
         public Guid IdService { get; set; }
 
-        [Description("Описание"), DataNotEmpty]
+        [Description("Описание")]
         public string Description { get; set; }
 
         [Description("Предложение"), DataLookup("IdSentenceType", "SentenceTypes")]

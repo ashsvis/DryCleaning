@@ -29,65 +29,158 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.pnlContainer = new System.Windows.Forms.Panel();
+            this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.мастерToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчётыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.документыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.прайслистToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.действияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiClients = new System.Windows.Forms.ToolStripMenuItem();
+            this.редактироватьСотрудниковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiServices = new System.Windows.Forms.ToolStripMenuItem();
+            this.редактироватьПредложенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.оформитьЗаказToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDictionaries = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlContainer = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.менюToolStripMenuItem,
+            this.отчётыToolStripMenuItem,
+            this.документыToolStripMenuItem,
+            this.действияToolStripMenuItem,
             this.tsmiDictionaries});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(933, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(616, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // toolStrip1
+            // менюToolStripMenuItem
             // 
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(933, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
+            this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.мастерToolStripMenuItem,
+            this.toolStripMenuItem1,
+            this.tsmiExit});
+            this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
+            this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
+            this.менюToolStripMenuItem.Text = "Меню";
             // 
-            // statusStrip1
+            // мастерToolStripMenuItem
             // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 497);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(933, 22);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
+            this.мастерToolStripMenuItem.Name = "мастерToolStripMenuItem";
+            this.мастерToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.мастерToolStripMenuItem.Text = "Мастер";
             // 
-            // pnlContainer
+            // toolStripMenuItem1
             // 
-            this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContainer.Location = new System.Drawing.Point(0, 49);
-            this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(933, 448);
-            this.pnlContainer.TabIndex = 3;
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // tsmiExit
+            // 
+            this.tsmiExit.Name = "tsmiExit";
+            this.tsmiExit.Size = new System.Drawing.Size(180, 22);
+            this.tsmiExit.Text = "Выход";
+            this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
+            // 
+            // отчётыToolStripMenuItem
+            // 
+            this.отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
+            this.отчётыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.отчётыToolStripMenuItem.Text = "Отчёты";
+            // 
+            // документыToolStripMenuItem
+            // 
+            this.документыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.прайслистToolStripMenuItem});
+            this.документыToolStripMenuItem.Name = "документыToolStripMenuItem";
+            this.документыToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
+            this.документыToolStripMenuItem.Text = "Документы";
+            // 
+            // прайслистToolStripMenuItem
+            // 
+            this.прайслистToolStripMenuItem.Name = "прайслистToolStripMenuItem";
+            this.прайслистToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.прайслистToolStripMenuItem.Text = "Прайс-лист";
+            // 
+            // действияToolStripMenuItem
+            // 
+            this.действияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiClients,
+            this.редактироватьСотрудниковToolStripMenuItem,
+            this.tsmiServices,
+            this.редактироватьПредложенияToolStripMenuItem,
+            this.оформитьЗаказToolStripMenuItem});
+            this.действияToolStripMenuItem.Name = "действияToolStripMenuItem";
+            this.действияToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
+            this.действияToolStripMenuItem.Text = "Действия";
+            // 
+            // tsmiClients
+            // 
+            this.tsmiClients.Name = "tsmiClients";
+            this.tsmiClients.Size = new System.Drawing.Size(232, 22);
+            this.tsmiClients.Text = "Работа с клиентами";
+            this.tsmiClients.Click += new System.EventHandler(this.tsmiClients_Click);
+            // 
+            // редактироватьСотрудниковToolStripMenuItem
+            // 
+            this.редактироватьСотрудниковToolStripMenuItem.Name = "редактироватьСотрудниковToolStripMenuItem";
+            this.редактироватьСотрудниковToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.редактироватьСотрудниковToolStripMenuItem.Text = "Редактировать сотрудников";
+            // 
+            // tsmiServices
+            // 
+            this.tsmiServices.Name = "tsmiServices";
+            this.tsmiServices.Size = new System.Drawing.Size(232, 22);
+            this.tsmiServices.Text = "Редактировать ассортимент";
+            this.tsmiServices.Click += new System.EventHandler(this.tsmiServices_Click);
+            // 
+            // редактироватьПредложенияToolStripMenuItem
+            // 
+            this.редактироватьПредложенияToolStripMenuItem.Name = "редактироватьПредложенияToolStripMenuItem";
+            this.редактироватьПредложенияToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.редактироватьПредложенияToolStripMenuItem.Text = "Редактировать предложения";
+            // 
+            // оформитьЗаказToolStripMenuItem
+            // 
+            this.оформитьЗаказToolStripMenuItem.Name = "оформитьЗаказToolStripMenuItem";
+            this.оформитьЗаказToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.оформитьЗаказToolStripMenuItem.Text = "Оформить заказ";
             // 
             // tsmiDictionaries
             // 
             this.tsmiDictionaries.Name = "tsmiDictionaries";
             this.tsmiDictionaries.Size = new System.Drawing.Size(67, 20);
             this.tsmiDictionaries.Text = "Словари";
+            this.tsmiDictionaries.Visible = false;
             this.tsmiDictionaries.DropDownOpening += new System.EventHandler(this.tsmiDictionaries_DropDownOpening);
+            // 
+            // pnlContainer
+            // 
+            this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContainer.Location = new System.Drawing.Point(0, 24);
+            this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(616, 328);
+            this.pnlContainer.TabIndex = 3;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 519);
+            this.ClientSize = new System.Drawing.Size(616, 352);
             this.Controls.Add(this.pnlContainer);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Химчистка";
@@ -103,10 +196,21 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Panel pnlContainer;
         private System.Windows.Forms.ToolStripMenuItem tsmiDictionaries;
+        private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчётыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem документыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem действияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem мастерToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsmiExit;
+        private System.Windows.Forms.ToolStripMenuItem прайслистToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiClients;
+        private System.Windows.Forms.ToolStripMenuItem редактироватьСотрудниковToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiServices;
+        private System.Windows.Forms.ToolStripMenuItem редактироватьПредложенияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem оформитьЗаказToolStripMenuItem;
     }
 }
 

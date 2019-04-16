@@ -50,8 +50,8 @@ namespace Model
         [Description("Пенсионное свидетельство"), DataNotEmpty]
         public string PensionCertificate { get; set; }
 
-        [Description("Пол"), DataNotEmpty]
-        public string Gender { get; set; }
+        [Description("Пол"), DataLookup("IdGender", "Genders")]
+        public Guid IdGender { get; set; }
 
         [Description("Дата рождения")]
         public DateTime BirthDay { get; set; }

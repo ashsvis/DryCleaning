@@ -23,6 +23,9 @@ namespace Model
         [Description("Процент с продаж")]
         public decimal SalesPercentage { get; set; }
 
+        [Description("Инструкция"), DataNotEmpty]
+        public string JobDescription { get; set; }
+
         public int CompareTo(Appointment other)
         {
             return string.Compare(this.ToString(), other.ToString());

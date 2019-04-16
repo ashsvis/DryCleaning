@@ -14,7 +14,7 @@ namespace Model
         [Description("Наименование"), DataNotEmpty]
         public string Name { get; set; }
 
-        [Description("Описание"), DataNotEmpty]
+        [Description("Описание")]
         public string Description { get; set; }
 
         public int CompareTo(SentenceType other)
