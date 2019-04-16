@@ -246,14 +246,17 @@ namespace ViewGenerator
                         grid.RowCount = row + 1;
                         grid.RowStyles.Add(new RowStyle());
                         grid.Controls.Add(label, 0, row);
+                        DateTime? dtvalue = (DateTime)prop.GetValue(userClass);
                         dateTimePicker = new DateTimePicker
                         {
                             Name = "dtp" + prop.Name,
-                            Text = prop.GetValue(userClass)?.ToString(),
                             Dock = DockStyle.Fill,
                             Width = 70,
                             TabIndex = row
                         };
+                        // контролируем минимальное значение даты
+                        if (dtvalue != null && dtvalue < dateTimePicker.MinDate) dtvalue = dateTimePicker.MinDate;
+                        dateTimePicker.Text = dtvalue?.ToString();
                         dateTimePicker.TextChanged += (o, e) => { btnOk.Enabled = true; };
                         dateTimePicker.ValueChanged += (o, e) => { btnOk.Enabled = true; };
                         // добавляем редактор даты во второй столбец строки сетки

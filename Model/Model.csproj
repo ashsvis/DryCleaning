@@ -48,6 +48,8 @@
     <Compile Include="Client.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Implementation.cs" />
+    <Compile Include="Root.cs" />
+    <Compile Include="SaverLoader.cs" />
     <Compile Include="Sentence.cs" />
     <Compile Include="SentenceType.cs" />
     <Compile Include="ViewGenerator\DataLookupAttribute.cs" />
