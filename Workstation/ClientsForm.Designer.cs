@@ -32,18 +32,18 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnClientsReport = new System.Windows.Forms.Button();
+            this.btnPrintCard = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.клиентыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiClients = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiClientCard = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiClientReport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnPrintCard = new System.Windows.Forms.Button();
-            this.btnClientsReport = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -66,9 +66,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Info;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(461, 15);
+            this.label1.Size = new System.Drawing.Size(749, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Данная форма представляет возможность редактирования клиентов организации";
             // 
@@ -79,51 +81,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(749, 270);
             this.panel1.TabIndex = 1;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.клиентыToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(755, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // клиентыToolStripMenuItem
-            // 
-            this.клиентыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiClientCard,
-            this.tsmiClientReport,
-            this.toolStripMenuItem1,
-            this.tsmiClose});
-            this.клиентыToolStripMenuItem.Name = "клиентыToolStripMenuItem";
-            this.клиентыToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.клиентыToolStripMenuItem.Text = "Клиенты";
-            // 
-            // tsmiClientCard
-            // 
-            this.tsmiClientCard.Name = "tsmiClientCard";
-            this.tsmiClientCard.Size = new System.Drawing.Size(180, 22);
-            this.tsmiClientCard.Text = "Карточка";
-            // 
-            // tsmiClientReport
-            // 
-            this.tsmiClientReport.Name = "tsmiClientReport";
-            this.tsmiClientReport.Size = new System.Drawing.Size(180, 22);
-            this.tsmiClientReport.Text = "Отчёт";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // tsmiClose
-            // 
-            this.tsmiClose.Name = "tsmiClose";
-            this.tsmiClose.Size = new System.Drawing.Size(180, 22);
-            this.tsmiClose.Text = "Закрыть";
-            this.tsmiClose.Click += new System.EventHandler(this.tsmiClose_Click);
             // 
             // groupBox1
             // 
@@ -136,21 +93,6 @@
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Отчёты";
-            // 
-            // btnPrintCard
-            // 
-            this.btnPrintCard.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnPrintCard.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnPrintCard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPrintCard.Font = new System.Drawing.Font("Arial", 11F);
-            this.btnPrintCard.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintCard.Image")));
-            this.btnPrintCard.Location = new System.Drawing.Point(130, 22);
-            this.btnPrintCard.Name = "btnPrintCard";
-            this.btnPrintCard.Size = new System.Drawing.Size(244, 66);
-            this.btnPrintCard.TabIndex = 3;
-            this.btnPrintCard.Text = "Распечатать карточку";
-            this.btnPrintCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPrintCard.UseVisualStyleBackColor = false;
             // 
             // btnClientsReport
             // 
@@ -167,6 +109,67 @@
             this.btnClientsReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClientsReport.UseVisualStyleBackColor = false;
             // 
+            // btnPrintCard
+            // 
+            this.btnPrintCard.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnPrintCard.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnPrintCard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPrintCard.Font = new System.Drawing.Font("Arial", 11F);
+            this.btnPrintCard.Image = ((System.Drawing.Image)(resources.GetObject("btnPrintCard.Image")));
+            this.btnPrintCard.Location = new System.Drawing.Point(130, 22);
+            this.btnPrintCard.Name = "btnPrintCard";
+            this.btnPrintCard.Size = new System.Drawing.Size(244, 66);
+            this.btnPrintCard.TabIndex = 3;
+            this.btnPrintCard.Text = "Распечатать карточку";
+            this.btnPrintCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPrintCard.UseVisualStyleBackColor = false;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiClients});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.menuStrip1.Size = new System.Drawing.Size(755, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // tsmiClients
+            // 
+            this.tsmiClients.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiClientCard,
+            this.tsmiClientReport,
+            this.toolStripMenuItem1,
+            this.tsmiClose});
+            this.tsmiClients.Name = "tsmiClients";
+            this.tsmiClients.Size = new System.Drawing.Size(67, 20);
+            this.tsmiClients.Text = "Клиенты";
+            // 
+            // tsmiClientCard
+            // 
+            this.tsmiClientCard.Name = "tsmiClientCard";
+            this.tsmiClientCard.Size = new System.Drawing.Size(125, 22);
+            this.tsmiClientCard.Text = "Карточка";
+            // 
+            // tsmiClientReport
+            // 
+            this.tsmiClientReport.Name = "tsmiClientReport";
+            this.tsmiClientReport.Size = new System.Drawing.Size(125, 22);
+            this.tsmiClientReport.Text = "Отчёт";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(122, 6);
+            // 
+            // tsmiClose
+            // 
+            this.tsmiClose.Name = "tsmiClose";
+            this.tsmiClose.Size = new System.Drawing.Size(125, 22);
+            this.tsmiClose.Text = "Закрыть";
+            this.tsmiClose.Click += new System.EventHandler(this.tsmiClose_Click);
+            // 
             // ClientsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -177,14 +180,15 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ClientsForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Клиенты";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ClientsForm_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -196,7 +200,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem клиентыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiClients;
         private System.Windows.Forms.ToolStripMenuItem tsmiClientCard;
         private System.Windows.Forms.ToolStripMenuItem tsmiClientReport;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;

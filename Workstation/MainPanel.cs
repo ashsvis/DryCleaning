@@ -24,8 +24,13 @@ namespace Workstation
         private void btnClients_Click(object sender, EventArgs e)
         {
             if (MainForm.ClientsForm == null) MainForm.ClientsForm = new ClientsForm(_root);
-            MainForm.ClientsForm.Show();
+            MainForm.ShowForm(MainForm.ClientsForm);
         }
 
+        private void btnEmployees_Click(object sender, EventArgs e)
+        {
+            if (MainForm.EmployeesForm == null) MainForm.EmployeesForm = new EmployeesForm(_root);
+            MainForm.ShowForm(MainForm.EmployeesForm);
+        }
     }
 }

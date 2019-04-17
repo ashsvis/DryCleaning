@@ -16,10 +16,10 @@ namespace ViewGenerator
             Error(message, caption);
         }
 
-        public static UserControl BuildPropertyPanel(object userModel, object userClass, object userCollection)
+        public static GridPanel BuildPropertyPanel(object userModel, object userClass, object userCollection)
         {
             // заготовка для таблицы записей
-            var userControl = new UserControl
+            var userControl = new GridPanel
             {
                 Dock = DockStyle.Fill
             };
@@ -152,6 +152,8 @@ namespace ViewGenerator
             flow.Controls.Add(btnDelete);
             // добавим панель кнопок в сетку
             grid.Controls.Add(flow, 0, 0);
+            var gr = listView.CreateGraphics();
+            var colsmax = new List<float>();
             // получаем тип объекта, переданного через параметр
             var type = userClass.GetType();
             MemberInfo[] m = type.GetProperties();  // получаем массив свойств объекта
@@ -160,49 +162,54 @@ namespace ViewGenerator
             {
                 // получаем ссылку на свойство по его имени
                 var prop = type.GetProperty(info.Name);
+                // если столбец не показывается в таблице, пропускаем
+                if (!PropertyPanelBuilder.CheckTableBrowsabeMode(userClass, prop)) continue;
                 // получаем наименование свойства из дескриптора
                 var caption = PropertyPanelBuilder.GetPropertyCaption(userClass, prop);
+                var text = string.IsNullOrWhiteSpace(caption) ? prop.Name : caption;
+                var width = gr.MeasureString(text, listView.Font).Width + 16;
                 var typeName = prop.PropertyType.ToString();
-                var width = 120;
                 var textAlign = HorizontalAlignment.Left;
                 switch (typeName)
                 {
                     case "System.Guid":
                         if (count++ == 0) continue;
+                        colsmax.Add(width);
                         break;
                     case "System.String":
                         if (PropertyPanelBuilder.CheckPasswordMode(userClass, prop)) continue;
-                        width = 120;
+                        colsmax.Add(width);
                         break;
                     case "System.Int32":    // для целочисленных свойств
                         textAlign = HorizontalAlignment.Right;
-                        width = 70;
+                        colsmax.Add(width);
                         break;
                     case "System.Decimal":  // для свойств с ценой
                         textAlign = HorizontalAlignment.Right;
-                        width = 70;
+                        colsmax.Add(width);
                         break;
                     case "System.DateTime": // для свойств с датой
                         textAlign = HorizontalAlignment.Center;
-                        width = 90;
+                        colsmax.Add(width);
                         break;
                     case "System.Boolean": // для логических свойств
                         textAlign = HorizontalAlignment.Center;
-                        width = 60;
+                        colsmax.Add(width);
                         break;
                     default:
                         continue;
                 }
                 listView.Columns.Add(new ColumnHeader
                 {
-                    Text = string.IsNullOrWhiteSpace(caption) ? prop.Name : caption,
+                    Text = text,
                     TextAlign = textAlign,
-                    Width = width
+                    Width = (int)width
                 });
             }
             // цепляем обработчик для виртуального режима
             listView.RetrieveVirtualItem += (o, e) =>
             {
+                var lv = (ListView)o;
                 e.Item = new ListViewItem();
                 // получаем ссылку на коллекцию
                 var collection = (IEnumerable<object>)userCollection;
@@ -216,6 +223,8 @@ namespace ViewGenerator
                 {
                     // получаем ссылку на свойство по его имени
                     var prop = type.GetProperty(m[i].Name);
+                    // если столбец не показывается в таблице, пропускаем
+                    if (!PropertyPanelBuilder.CheckTableBrowsabeMode(userClass, prop)) continue;
                     // если свойство первое и его тип Guid (ключевой столбец) - пропускаем
                     if (i == 0 && prop.PropertyType == typeof(Guid)) continue;
                     string value; // здесь будет значение
@@ -236,7 +245,11 @@ namespace ViewGenerator
                         value = GetLookupName(prop, item, userModel);
                     else
                         continue;
-                    // если небыло столбцов, пишем в первый
+                    var width = gr.MeasureString(value, lv.Font).Width + 16;
+                    // делаем столбец шире, если нужно
+                    if (lv.Columns[count].Width < (int)width)
+                        lv.Columns[count].Width = (int)width;
+                    // если не было столбцов, пишем в первый
                     if (count++ == 0)
                         e.Item.Text = value;
                     else // иначе добавляем
@@ -265,8 +278,16 @@ namespace ViewGenerator
             // разрешаем кнопки редактирования
             listView.SelectedIndexChanged += (o, e) => 
             {
-                btnEdit.Enabled = true;
-                btnDelete.Enabled = true;
+                var lv = (ListView)o;
+                btnEdit.Enabled = btnDelete.Enabled = lv.SelectedIndices.Count > 0;
+                if (lv.SelectedIndices.Count > 0)
+                {
+                    var collection = (IEnumerable<object>)userCollection;
+                    var item = collection.ElementAt(lv.SelectedIndices[0]);
+                    userControl.OnGridSelectedChanged(item);
+                }
+                else
+                    userControl.OnGridSelectedChanged(null);
             };
 
             // добавим детальный список в сетку

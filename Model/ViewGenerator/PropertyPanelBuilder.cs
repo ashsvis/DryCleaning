@@ -144,6 +144,8 @@ namespace ViewGenerator
                         };
                         // устанавливаем количество символов значения из атрибута DataRangeAttibute
                         SetRange(userClass, prop, textBox);
+                        // устанавливаем размер текстового редактора и многострочный режим
+                        SetSize(userClass, prop, textBox);
                         // установка символа защиты пароля по атрибуту DataPassword
                         var safeEditMode = SetPasswordMode(userClass, prop, textBox);
                         // при изменении содержимого в текстовом поле кнопка "Ввод" становится доступной
@@ -255,7 +257,7 @@ namespace ViewGenerator
                             TabIndex = row
                         };
                         // контролируем минимальное значение даты
-                        if (dtvalue != null && dtvalue < dateTimePicker.MinDate) dtvalue = dateTimePicker.MinDate;
+                        if (dtvalue != null && dtvalue < dateTimePicker.MinDate) dtvalue = DateTime.Now;
                         dateTimePicker.Text = dtvalue?.ToString();
                         dateTimePicker.TextChanged += (o, e) => { btnOk.Enabled = true; };
                         dateTimePicker.ValueChanged += (o, e) => { btnOk.Enabled = true; };
@@ -440,6 +442,21 @@ namespace ViewGenerator
         }
 
         /// <summary>
+        /// Проверка признака показа столбца в таблице в атрибуте свойства
+        /// </summary>
+        /// <param name="userClass">объект со свойствами</param>
+        /// <param name="prop">ссылка на свойство</param>
+        /// <returns>Признак защищённого ввода текста</returns>
+        public static bool CheckTableBrowsabeMode(object userClass, PropertyInfo prop)
+        {
+            // получаем ссылку на коллекцию атрибутов свойства
+            var attributes = TypeDescriptor.GetProperties(userClass)[prop.Name].Attributes;
+            // получаем из коллекции атрибутов ссылку на атрибут дескриптора свойства
+            var mAttribute = (TableBrowsableAttribute)attributes[typeof(TableBrowsableAttribute)];
+            return mAttribute != null && mAttribute.Browsable || mAttribute == null;
+        }
+
+        /// <summary>
         /// Установка границ числового значения
         /// </summary>
         /// <param name="userClass">объект со свойствами</param>
@@ -476,6 +493,31 @@ namespace ViewGenerator
             var high = mAttribute.High;
             if (high < 1 || high > 32767) return;
             textBox.MaxLength = Convert.ToInt32(high);
+        }
+
+        /// <summary>
+        /// Установка размера текстового редактора
+        /// </summary>
+        /// <param name="userClass">объект со свойствами</param>
+        /// <param name="prop">ссылка на свойство</param>
+        /// <param name="textBox">ссылка на компонент TextBox</param>
+        private void SetSize(object userClass, PropertyInfo prop, TextBox textBox)
+        {
+            // получаем ссылку на коллекцию атрибутов свойства
+            var attributes = TypeDescriptor.GetProperties(userClass)[prop.Name].Attributes;
+            // получаем из коллекции атрибутов ссылку на атрибут границ значения свойства
+            var mAttribute = (TextSizeAttribute)attributes[typeof(TextSizeAttribute)];
+            if (mAttribute == null) return;
+            var width = mAttribute.Width;
+            var height = mAttribute.Height;
+            if (mAttribute.Multiline)
+            {
+                textBox.Multiline = true;
+                textBox.WordWrap = false;
+                textBox.ScrollBars = ScrollBars.Both;
+            }
+            if (width > 0) textBox.Width = width;
+            if (height > 0) textBox.Height = height;
         }
 
         /// <summary>

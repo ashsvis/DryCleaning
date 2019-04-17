@@ -6,10 +6,10 @@ namespace Workstation
 {
     public partial class ClientsForm : Form
     {
-        public ClientsForm(Root _root)
+        public ClientsForm(Root root)
         {
             InitializeComponent();
-            panel1.Controls.Add(GridPanelBuilder.BuildPropertyPanel(_root, new Client(), _root.Clients));
+            panel1.Controls.Add(GridPanelBuilder.BuildPropertyPanel(root, new Client(), root.Clients));
         }
 
         private void ClientsForm_FormClosing(object sender, FormClosingEventArgs e)

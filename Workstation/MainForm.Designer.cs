@@ -57,6 +57,7 @@
             this.tsmiDictionaries});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
             this.menuStrip1.Size = new System.Drawing.Size(616, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
@@ -74,18 +75,18 @@
             // мастерToolStripMenuItem
             // 
             this.мастерToolStripMenuItem.Name = "мастерToolStripMenuItem";
-            this.мастерToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.мастерToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
             this.мастерToolStripMenuItem.Text = "Мастер";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(112, 6);
             // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(180, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(115, 22);
             this.tsmiExit.Text = "Выход";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
@@ -133,6 +134,7 @@
             this.редактироватьСотрудниковToolStripMenuItem.Name = "редактироватьСотрудниковToolStripMenuItem";
             this.редактироватьСотрудниковToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.редактироватьСотрудниковToolStripMenuItem.Text = "Редактировать сотрудников";
+            this.редактироватьСотрудниковToolStripMenuItem.Click += new System.EventHandler(this.tsmiEmployees_Click);
             // 
             // tsmiServices
             // 

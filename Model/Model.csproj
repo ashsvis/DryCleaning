@@ -58,9 +58,14 @@
     <Compile Include="ViewGenerator\DataPasswordAttribute.cs" />
     <Compile Include="ViewGenerator\DataRangeAttribute.cs" />
     <Compile Include="ViewGenerator\GridPanelBuilder.cs" />
+    <Compile Include="ViewGenerator\GridPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="ViewGenerator\PropertyPanelBuilder.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewGenerator\TableBrowsableAttribute.cs" />
+    <Compile Include="ViewGenerator\TextSizeAttribute.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

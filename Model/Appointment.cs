@@ -14,7 +14,7 @@ namespace Model
         [Description("Наименование"), DataNotEmpty]
         public string Name { get; set; }
 
-        [Description("Описание"), DataNotEmpty]
+        [Description("Описание"), DataNotEmpty, TableBrowsable(false), TextSize(400, true, 120)]
         public string Description { get; set; }
 
         [Description("Оклад")]
@@ -23,7 +23,7 @@ namespace Model
         [Description("Процент с продаж")]
         public decimal SalesPercentage { get; set; }
 
-        [Description("Инструкция"), DataNotEmpty]
+        [Description("Инструкция"), DataNotEmpty, TableBrowsable(false), TextSize(400, true, 120)]
         public string JobDescription { get; set; }
 
         public int CompareTo(Appointment other)

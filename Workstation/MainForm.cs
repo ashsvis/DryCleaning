@@ -11,6 +11,8 @@ namespace Workstation
         private Root _root = new Root();
         public static ServicesForm ServicesForm;
         public static ClientsForm ClientsForm;
+        public static EmployeesForm EmployeesForm;
+        public static AppointmentsForm AppointmentsForm;
 
         public MainForm()
         {
@@ -56,6 +58,11 @@ namespace Workstation
             }
         }
 
+        private void tsmiExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaverLoader.SaveToFile(Path.ChangeExtension(Application.ExecutablePath, ".bin"), _root);
@@ -64,18 +71,27 @@ namespace Workstation
         private void tsmiServices_Click(object sender, EventArgs e)
         {
             if (ServicesForm == null) ServicesForm = new ServicesForm(_root);
-            ServicesForm.Show();
+            ShowForm(ServicesForm);
         }
 
         private void tsmiClients_Click(object sender, EventArgs e)
         {
             if (ClientsForm == null) ClientsForm = new ClientsForm(_root);
-            ClientsForm.Show();
+            ShowForm(ClientsForm);
         }
 
-        private void tsmiExit_Click(object sender, EventArgs e)
+        private void tsmiEmployees_Click(object sender, EventArgs e)
         {
-            Close();
+            if (EmployeesForm == null) EmployeesForm = new EmployeesForm(_root);
+            ShowForm(EmployeesForm);
+        }
+
+        public static void ShowForm(Form form)
+        {
+            form.Show();
+            if (form.WindowState == FormWindowState.Minimized)
+                form.WindowState = FormWindowState.Normal;
+            form.BringToFront();
         }
     }
 }

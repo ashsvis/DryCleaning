@@ -11,10 +11,10 @@ namespace Model
     {
         public Guid IdService { get; set; } = Guid.NewGuid();
 
-        [Description("Наименование"), DataNotEmpty]
+        [Description("Наименование"), DataNotEmpty, TextSize(200)]
         public string Name { get; set; }
 
-        [Description("Описание")]
+        [Description("Описание"), TextSize(0, true, 100)]
         public string Description { get; set; }
 
         [Description("Цена")]
