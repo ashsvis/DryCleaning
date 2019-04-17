@@ -45,26 +45,33 @@
             this.должностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAppointments = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSelectAppointment = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pbPhoto = new System.Windows.Forms.PictureBox();
+            this.btnSelectPhoto = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 33);
+            this.panel1.Location = new System.Drawing.Point(167, 33);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(802, 270);
+            this.panel1.Size = new System.Drawing.Size(709, 309);
             this.panel1.TabIndex = 1;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 24);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -72,17 +79,18 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(808, 412);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(879, 451);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.Info;
+            this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(802, 30);
+            this.label1.Size = new System.Drawing.Size(873, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Данная форма представляет возможность ввода и редактирования данных о сотрудниках" +
     "\r\nВозможно сформировать отчёты, просмотреть личные карточки и вывести их в Excel" +
@@ -90,10 +98,10 @@
             // 
             // groupBox1
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.groupBox1, 2);
             this.groupBox1.Controls.Add(this.btnEmployeesReport);
             this.groupBox1.Controls.Add(this.btnBuildCard);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 309);
+            this.groupBox1.Location = new System.Drawing.Point(3, 348);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(802, 100);
             this.groupBox1.TabIndex = 2;
@@ -119,6 +127,7 @@
             // 
             this.btnBuildCard.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnBuildCard.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnBuildCard.Enabled = false;
             this.btnBuildCard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnBuildCard.Font = new System.Drawing.Font("Arial", 11F);
             this.btnBuildCard.Image = ((System.Drawing.Image)(resources.GetObject("btnBuildCard.Image")));
@@ -138,7 +147,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.menuStrip1.Size = new System.Drawing.Size(808, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(879, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -207,11 +216,45 @@
             this.tsmiSelectAppointment.Size = new System.Drawing.Size(192, 22);
             this.tsmiSelectAppointment.Text = "Выбрать должность";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.AutoSize = true;
+            this.groupBox2.Controls.Add(this.btnSelectPhoto);
+            this.groupBox2.Controls.Add(this.pbPhoto);
+            this.groupBox2.Location = new System.Drawing.Point(3, 33);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(158, 222);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Фотография";
+            // 
+            // pbPhoto
+            // 
+            this.pbPhoto.BackColor = System.Drawing.SystemColors.Window;
+            this.pbPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbPhoto.Location = new System.Drawing.Point(9, 22);
+            this.pbPhoto.Name = "pbPhoto";
+            this.pbPhoto.Size = new System.Drawing.Size(143, 133);
+            this.pbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPhoto.TabIndex = 4;
+            this.pbPhoto.TabStop = false;
+            // 
+            // btnSelectPhoto
+            // 
+            this.btnSelectPhoto.Enabled = false;
+            this.btnSelectPhoto.Location = new System.Drawing.Point(28, 177);
+            this.btnSelectPhoto.Name = "btnSelectPhoto";
+            this.btnSelectPhoto.Size = new System.Drawing.Size(105, 23);
+            this.btnSelectPhoto.TabIndex = 5;
+            this.btnSelectPhoto.Text = "Выбрать фото";
+            this.btnSelectPhoto.UseVisualStyleBackColor = true;
+            this.btnSelectPhoto.Click += new System.EventHandler(this.btnSelectPhoto_Click);
+            // 
             // EmployeesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(808, 436);
+            this.ClientSize = new System.Drawing.Size(879, 475);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -225,6 +268,8 @@
             this.groupBox1.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,5 +293,8 @@
         private System.Windows.Forms.ToolStripMenuItem должностиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiAppointments;
         private System.Windows.Forms.ToolStripMenuItem tsmiSelectAppointment;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnSelectPhoto;
+        private System.Windows.Forms.PictureBox pbPhoto;
     }
 }

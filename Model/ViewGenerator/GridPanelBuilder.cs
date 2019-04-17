@@ -85,21 +85,25 @@ namespace ViewGenerator
                 {
                     // вызываем метод на коллекции объектов с аргументами
                     method.Invoke(userCollection, arguments);
-                    listView.VirtualListSize = 0; // сбросим виртуальный размер
-                    listView.VirtualListSize = ((IEnumerable<object>)userCollection).Count(); // установим размер по размеру коллекции
-                    listView.Invalidate(); // просим обновить вид
-                    btnEdit.Enabled = btnDelete.Enabled = false;
-                    // ищем новую строку в списке
-                    var lvi = listView.FindItemWithText(item.ToString());
-                    if (lvi != null) // если найдена, то делаем ее текущей
-                    {
-                        lvi.Selected = true;
-                        lvi.EnsureVisible();
-                    }
                 }
                 catch (Exception ex)
                 {
-                    OnError(ex.InnerException.Message, "Добавление записи");
+                    if (ex.InnerException != null)
+                        OnError(ex.InnerException.Message, "Добавление записи");
+                    else
+                        OnError(ex.Message, "Добавление записи");
+                }
+                listView.VirtualListSize = 0; // сбросим виртуальный размер
+                listView.VirtualListSize = ((IEnumerable<object>)userCollection).Count(); // установим размер по размеру коллекции
+                listView.Invalidate(); // просим обновить вид
+                btnEdit.Enabled = btnDelete.Enabled = false;
+                userControl.OnGridSelectedChanged(item);
+                // ищем новую строку в списке
+                var lvi = listView.FindItemWithText(item.ToString());
+                if (lvi != null) // если найдена, то делаем ее текущей
+                {
+                    lvi.Selected = true;
+                    lvi.EnsureVisible();
                 }
             };
             btnEdit.Click += (o, e) =>
@@ -114,6 +118,7 @@ namespace ViewGenerator
                 // если не была нажата клавиша "Ввод", выходим
                 if (frm.DialogResult != DialogResult.OK) return;
                 listView.Invalidate(); // просим обновить вид
+                userControl.OnGridSelectedChanged(item);
             };
             btnDelete.Click += (o, e) =>
             {
@@ -138,6 +143,7 @@ namespace ViewGenerator
                 listView.VirtualListSize = ((IEnumerable<object>)userCollection).Count(); // установим размер по размеру коллекции
                 listView.Invalidate(); // просим обновить вид
                 btnEdit.Enabled = btnDelete.Enabled = false;
+                userControl.OnGridSelectedChanged(null);
             };
             // создадим панель для размещения кнопок
             var flow = new FlowLayoutPanel
@@ -247,7 +253,7 @@ namespace ViewGenerator
                         continue;
                     var width = gr.MeasureString(value, lv.Font).Width + 16;
                     // делаем столбец шире, если нужно
-                    if (lv.Columns[count].Width < (int)width)
+                    if (count < lv.Columns.Count && lv.Columns[count].Width < (int)width)
                         lv.Columns[count].Width = (int)width;
                     // если не было столбцов, пишем в первый
                     if (count++ == 0)

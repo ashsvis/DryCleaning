@@ -11,13 +11,13 @@ namespace Model
     {
         public Guid IdEmployee { get; set; } = Guid.NewGuid();
 
-        [Description("Фамилия"), DataNotEmpty]
+        [Description("Фамилия"), DataNotEmpty, TextSize(210)]
         public string Surname { get; set; }
 
-        [Description("Имя"), DataNotEmpty]
+        [Description("Имя"), DataNotEmpty, TableBrowsable(false)]
         public string FirstName { get; set; }
 
-        [Description("Отчество"), DataNotEmpty]
+        [Description("Отчество"), DataNotEmpty, TableBrowsable(false)]
         public string LastName { get; set; }
 
         [Description("Дата приёма")]
@@ -32,34 +32,34 @@ namespace Model
         [Description("Паспорт"), DataNotEmpty]
         public string Passport { get; set; }
 
-        [Description("Фотография"), DataNotEmpty]
+        [Description("Фотография"), DataNotEmpty, TableBrowsable(false)]
         public byte[] Photo { get; set; }
-
-        [Description("Замечания")]
-        public string Notes { get; set; }
 
         [Description("Должность"), DataLookup("IdAppointment", "Appointments")]
         public Guid IdAppointment { get; set; }
 
-        [Description("Табельный номер")]
+        [Description("Замечания")]
+        public string Notes { get; set; }
+
+        [Description("Табельный номер"), TableBrowsable(false)]
         public string PersonnelNumber { get; set; }
 
-        [Description("ИНН"), DataNotEmpty]
+        [Description("ИНН"), DataNotEmpty, TableBrowsable(false)]
         public string TIN { get; set; }
 
-        [Description("Пенсионное свидетельство"), DataNotEmpty]
+        [Description("Пенсионное свидетельство"), DataNotEmpty, TableBrowsable(false)]
         public string PensionCertificate { get; set; }
 
-        [Description("Пол"), DataLookup("IdGender", "Genders")]
+        [Description("Пол"), DataLookup("IdGender", "Genders"), TableBrowsable(false)]
         public Guid IdGender { get; set; }
 
-        [Description("Дата рождения")]
+        [Description("Дата рождения"), TableBrowsable(false)]
         public DateTime BirthDay { get; set; }
 
-        [Description("Место рождения"), DataNotEmpty]
+        [Description("Место рождения"), DataNotEmpty, TableBrowsable(false)]
         public string BirthPlace { get; set; }
 
-        [Description("Образование")]
+        [Description("Образование"), TableBrowsable(false)]
         public string Education { get; set; }
 
         public int CompareTo(Employee other)
