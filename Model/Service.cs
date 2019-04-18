@@ -14,7 +14,7 @@ namespace Model
         [Description("Наименование"), DataNotEmpty, TextSize(200)]
         public string Name { get; set; }
 
-        [Description("Описание"), TextSize(0, true, 100)]
+        [Description("Описание")]
         public string Description { get; set; }
 
         [Description("Цена")]

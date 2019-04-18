@@ -119,6 +119,7 @@
             this.btnServices.Text = "Товары и услуги";
             this.btnServices.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnServices.UseVisualStyleBackColor = false;
+            this.btnServices.Click += new System.EventHandler(this.btnServices_Click);
             // 
             // MainPanel
             // 

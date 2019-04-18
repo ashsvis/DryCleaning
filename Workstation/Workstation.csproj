@@ -78,6 +78,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SentencesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SentencesForm.Designer.cs">
+      <DependentUpon>SentencesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServicesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SentencesForm.resx">
+      <DependentUpon>SentencesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ServicesForm.resx">
       <DependentUpon>ServicesForm.cs</DependentUpon>
     </EmbeddedResource>

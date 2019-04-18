@@ -92,5 +92,6 @@ namespace Workstation
                 _employee.Photo = CreateByteArray(image);
             }
         }
+
     }
 }

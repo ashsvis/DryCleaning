@@ -31,10 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeesForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnEmployeesReport = new System.Windows.Forms.Button();
             this.btnBuildCard = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnSelectPhoto = new System.Windows.Forms.Button();
+            this.pbPhoto = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tsmiEmployees = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSelectPhoto = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,17 +45,13 @@
             this.tsmiEmployeeReport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.должностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiAppointmentsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiAppointments = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiSelectAppointment = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.pbPhoto = new System.Windows.Forms.PictureBox();
-            this.btnSelectPhoto = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -81,20 +80,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.Size = new System.Drawing.Size(879, 451);
             this.tableLayoutPanel1.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Info;
-            this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(873, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Данная форма представляет возможность ввода и редактирования данных о сотрудниках" +
-    "\r\nВозможно сформировать отчёты, просмотреть личные карточки и вывести их в Excel" +
-    "";
             // 
             // groupBox1
             // 
@@ -139,11 +124,59 @@
             this.btnBuildCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuildCard.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.Info;
+            this.tableLayoutPanel1.SetColumnSpan(this.label1, 2);
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(873, 30);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Данная форма представляет возможность ввода и редактирования данных о сотрудниках" +
+    "\r\nВозможно сформировать отчёты, просмотреть личные карточки и вывести их в Excel" +
+    "";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.AutoSize = true;
+            this.groupBox2.Controls.Add(this.btnSelectPhoto);
+            this.groupBox2.Controls.Add(this.pbPhoto);
+            this.groupBox2.Location = new System.Drawing.Point(3, 33);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(158, 222);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Фотография";
+            // 
+            // btnSelectPhoto
+            // 
+            this.btnSelectPhoto.Enabled = false;
+            this.btnSelectPhoto.Location = new System.Drawing.Point(28, 177);
+            this.btnSelectPhoto.Name = "btnSelectPhoto";
+            this.btnSelectPhoto.Size = new System.Drawing.Size(105, 23);
+            this.btnSelectPhoto.TabIndex = 5;
+            this.btnSelectPhoto.Text = "Выбрать фото";
+            this.btnSelectPhoto.UseVisualStyleBackColor = true;
+            this.btnSelectPhoto.Click += new System.EventHandler(this.btnSelectPhoto_Click);
+            // 
+            // pbPhoto
+            // 
+            this.pbPhoto.BackColor = System.Drawing.SystemColors.Window;
+            this.pbPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbPhoto.Location = new System.Drawing.Point(9, 22);
+            this.pbPhoto.Name = "pbPhoto";
+            this.pbPhoto.Size = new System.Drawing.Size(143, 133);
+            this.pbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPhoto.TabIndex = 4;
+            this.pbPhoto.TabStop = false;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiEmployees,
-            this.должностиToolStripMenuItem});
+            this.tsmiAppointmentsMenu});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -193,14 +226,13 @@
             this.tsmiClose.Text = "Закрыть";
             this.tsmiClose.Click += new System.EventHandler(this.tsmiClose_Click);
             // 
-            // должностиToolStripMenuItem
+            // tsmiAppointmentsMenu
             // 
-            this.должностиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsmiAppointments,
-            this.tsmiSelectAppointment});
-            this.должностиToolStripMenuItem.Name = "должностиToolStripMenuItem";
-            this.должностиToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
-            this.должностиToolStripMenuItem.Text = "Должности";
+            this.tsmiAppointmentsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAppointments});
+            this.tsmiAppointmentsMenu.Name = "tsmiAppointmentsMenu";
+            this.tsmiAppointmentsMenu.Size = new System.Drawing.Size(82, 20);
+            this.tsmiAppointmentsMenu.Text = "Должности";
             // 
             // tsmiAppointments
             // 
@@ -208,47 +240,6 @@
             this.tsmiAppointments.Size = new System.Drawing.Size(192, 22);
             this.tsmiAppointments.Text = "К списку должностей";
             this.tsmiAppointments.Click += new System.EventHandler(this.tsmiAppointments_Click);
-            // 
-            // tsmiSelectAppointment
-            // 
-            this.tsmiSelectAppointment.Enabled = false;
-            this.tsmiSelectAppointment.Name = "tsmiSelectAppointment";
-            this.tsmiSelectAppointment.Size = new System.Drawing.Size(192, 22);
-            this.tsmiSelectAppointment.Text = "Выбрать должность";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.AutoSize = true;
-            this.groupBox2.Controls.Add(this.btnSelectPhoto);
-            this.groupBox2.Controls.Add(this.pbPhoto);
-            this.groupBox2.Location = new System.Drawing.Point(3, 33);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(158, 222);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Фотография";
-            // 
-            // pbPhoto
-            // 
-            this.pbPhoto.BackColor = System.Drawing.SystemColors.Window;
-            this.pbPhoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbPhoto.Location = new System.Drawing.Point(9, 22);
-            this.pbPhoto.Name = "pbPhoto";
-            this.pbPhoto.Size = new System.Drawing.Size(143, 133);
-            this.pbPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPhoto.TabIndex = 4;
-            this.pbPhoto.TabStop = false;
-            // 
-            // btnSelectPhoto
-            // 
-            this.btnSelectPhoto.Enabled = false;
-            this.btnSelectPhoto.Location = new System.Drawing.Point(28, 177);
-            this.btnSelectPhoto.Name = "btnSelectPhoto";
-            this.btnSelectPhoto.Size = new System.Drawing.Size(105, 23);
-            this.btnSelectPhoto.TabIndex = 5;
-            this.btnSelectPhoto.Text = "Выбрать фото";
-            this.btnSelectPhoto.UseVisualStyleBackColor = true;
-            this.btnSelectPhoto.Click += new System.EventHandler(this.btnSelectPhoto_Click);
             // 
             // EmployeesForm
             // 
@@ -266,10 +257,10 @@
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbPhoto)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,9 +281,8 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tsmiClose;
         private System.Windows.Forms.ToolStripMenuItem tsmiSelectPhoto;
-        private System.Windows.Forms.ToolStripMenuItem должностиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiAppointmentsMenu;
         private System.Windows.Forms.ToolStripMenuItem tsmiAppointments;
-        private System.Windows.Forms.ToolStripMenuItem tsmiSelectAppointment;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnSelectPhoto;
         private System.Windows.Forms.PictureBox pbPhoto;

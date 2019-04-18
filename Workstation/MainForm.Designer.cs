@@ -40,7 +40,7 @@
             this.tsmiClients = new System.Windows.Forms.ToolStripMenuItem();
             this.редактироватьСотрудниковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiServices = new System.Windows.Forms.ToolStripMenuItem();
-            this.редактироватьПредложенияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEditSentences = new System.Windows.Forms.ToolStripMenuItem();
             this.оформитьЗаказToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDictionaries = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlContainer = new System.Windows.Forms.Panel();
@@ -116,7 +116,7 @@
             this.tsmiClients,
             this.редактироватьСотрудниковToolStripMenuItem,
             this.tsmiServices,
-            this.редактироватьПредложенияToolStripMenuItem,
+            this.tsmiEditSentences,
             this.оформитьЗаказToolStripMenuItem});
             this.действияToolStripMenuItem.Name = "действияToolStripMenuItem";
             this.действияToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
@@ -143,11 +143,12 @@
             this.tsmiServices.Text = "Редактировать ассортимент";
             this.tsmiServices.Click += new System.EventHandler(this.tsmiServices_Click);
             // 
-            // редактироватьПредложенияToolStripMenuItem
+            // tsmiEditSentences
             // 
-            this.редактироватьПредложенияToolStripMenuItem.Name = "редактироватьПредложенияToolStripMenuItem";
-            this.редактироватьПредложенияToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.редактироватьПредложенияToolStripMenuItem.Text = "Редактировать предложения";
+            this.tsmiEditSentences.Name = "tsmiEditSentences";
+            this.tsmiEditSentences.Size = new System.Drawing.Size(232, 22);
+            this.tsmiEditSentences.Text = "Редактировать предложения";
+            this.tsmiEditSentences.Click += new System.EventHandler(this.tsmiEditSentences_Click);
             // 
             // оформитьЗаказToolStripMenuItem
             // 
@@ -160,7 +161,6 @@
             this.tsmiDictionaries.Name = "tsmiDictionaries";
             this.tsmiDictionaries.Size = new System.Drawing.Size(67, 20);
             this.tsmiDictionaries.Text = "Словари";
-            this.tsmiDictionaries.Visible = false;
             this.tsmiDictionaries.DropDownOpening += new System.EventHandler(this.tsmiDictionaries_DropDownOpening);
             // 
             // pnlContainer
@@ -211,7 +211,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiClients;
         private System.Windows.Forms.ToolStripMenuItem редактироватьСотрудниковToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiServices;
-        private System.Windows.Forms.ToolStripMenuItem редактироватьПредложенияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiEditSentences;
         private System.Windows.Forms.ToolStripMenuItem оформитьЗаказToolStripMenuItem;
     }
 }

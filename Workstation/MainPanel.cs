@@ -32,5 +32,11 @@ namespace Workstation
             if (MainForm.EmployeesForm == null) MainForm.EmployeesForm = new EmployeesForm(_root);
             MainForm.ShowForm(MainForm.EmployeesForm);
         }
+
+        private void btnServices_Click(object sender, EventArgs e)
+        {
+            if (MainForm.SentencesForm == null) MainForm.SentencesForm = new SentencesForm(_root);
+            MainForm.ShowForm(MainForm.SentencesForm);
+        }
     }
 }

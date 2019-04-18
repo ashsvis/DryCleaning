@@ -13,6 +13,7 @@ namespace Workstation
         public static ClientsForm ClientsForm;
         public static EmployeesForm EmployeesForm;
         public static AppointmentsForm AppointmentsForm;
+        public static SentencesForm SentencesForm;
 
         public MainForm()
         {
@@ -92,6 +93,12 @@ namespace Workstation
             if (form.WindowState == FormWindowState.Minimized)
                 form.WindowState = FormWindowState.Normal;
             form.BringToFront();
+        }
+
+        private void tsmiEditSentences_Click(object sender, EventArgs e)
+        {
+            if (SentencesForm == null) SentencesForm = new SentencesForm(_root);
+            ShowForm(SentencesForm);
         }
     }
 }
