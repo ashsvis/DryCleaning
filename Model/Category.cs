@@ -17,8 +17,8 @@ namespace Model
         [Description("Описание")]
         public string Description { get; set; }
 
-        [Description("Предложение"), DataLookup("IdSentenceType", "SentenceTypes")]
-        public Guid IdSentenceType { get; set; }
+        [Description("Предложение"), DataLookup("IdSentence", "Sentences")]
+        public Guid IdSentence { get; set; }
 
         [Description("Количество")]
         public int Quantity { get; set; }
@@ -30,7 +30,7 @@ namespace Model
 
         public override string ToString()
         {
-            return $"{IdService}{IdSentenceType}";
+            return $"{IdService}{IdSentence}";
         }
     }
 

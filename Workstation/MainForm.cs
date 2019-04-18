@@ -14,6 +14,7 @@ namespace Workstation
         public static EmployeesForm EmployeesForm;
         public static AppointmentsForm AppointmentsForm;
         public static SentencesForm SentencesForm;
+        public static SentenceTypesForm SentenceTypesForm;
 
         public MainForm()
         {

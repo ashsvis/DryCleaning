@@ -84,6 +84,12 @@
     <Compile Include="SentencesForm.Designer.cs">
       <DependentUpon>SentencesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SentenceTypesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SentenceTypesForm.Designer.cs">
+      <DependentUpon>SentenceTypesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ServicesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -116,6 +122,9 @@
     </Compile>
     <EmbeddedResource Include="SentencesForm.resx">
       <DependentUpon>SentencesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SentenceTypesForm.resx">
+      <DependentUpon>SentenceTypesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServicesForm.resx">
       <DependentUpon>ServicesForm.cs</DependentUpon>
