@@ -14,4 +14,5 @@ namespace ViewGenerator
             Browsable = browsable;
         }
     }
+
 }

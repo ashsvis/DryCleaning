@@ -48,7 +48,7 @@
             this.btnEditSentence = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCategoryReport = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -139,14 +139,14 @@
             // tsmiEditServices
             // 
             this.tsmiEditServices.Name = "tsmiEditServices";
-            this.tsmiEditServices.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEditServices.Size = new System.Drawing.Size(154, 22);
             this.tsmiEditServices.Text = "Редактировать";
             this.tsmiEditServices.Click += new System.EventHandler(this.tsmiEditServices_Click);
             // 
             // tsmiReportAboutServices
             // 
             this.tsmiReportAboutServices.Name = "tsmiReportAboutServices";
-            this.tsmiReportAboutServices.Size = new System.Drawing.Size(180, 22);
+            this.tsmiReportAboutServices.Size = new System.Drawing.Size(154, 22);
             this.tsmiReportAboutServices.Text = "Отчёт";
             // 
             // tableLayoutPanel1
@@ -255,27 +255,27 @@
             // 
             this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel2.AutoSize = true;
-            this.flowLayoutPanel2.Controls.Add(this.button3);
+            this.flowLayoutPanel2.Controls.Add(this.btnCategoryReport);
             this.flowLayoutPanel2.Controls.Add(this.button2);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 28);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(628, 64);
             this.flowLayoutPanel2.TabIndex = 5;
             // 
-            // button3
+            // btnCategoryReport
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.BackColor = System.Drawing.Color.Gainsboro;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Arial", 11F);
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.Location = new System.Drawing.Point(3, 3);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(306, 58);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Отчёт по данному пакету";
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btnCategoryReport.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCategoryReport.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnCategoryReport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCategoryReport.Font = new System.Drawing.Font("Arial", 11F);
+            this.btnCategoryReport.Image = ((System.Drawing.Image)(resources.GetObject("btnCategoryReport.Image")));
+            this.btnCategoryReport.Location = new System.Drawing.Point(3, 3);
+            this.btnCategoryReport.Name = "btnCategoryReport";
+            this.btnCategoryReport.Size = new System.Drawing.Size(306, 58);
+            this.btnCategoryReport.TabIndex = 4;
+            this.btnCategoryReport.Text = "Отчёт по данному пакету";
+            this.btnCategoryReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnCategoryReport.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
@@ -401,7 +401,7 @@
         private System.Windows.Forms.Button btnEmployeesReport;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCategoryReport;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button btnEditServices;

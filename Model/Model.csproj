@@ -65,6 +65,7 @@
     <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewGenerator\TableBrowsableAttribute.cs" />
+    <Compile Include="ViewGenerator\TableFilterableAttribute.cs" />
     <Compile Include="ViewGenerator\TextSizeAttribute.cs" />
   </ItemGroup>
   <ItemGroup />

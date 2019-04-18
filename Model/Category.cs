@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using ViewGenerator;
 
 namespace Model
@@ -14,10 +15,10 @@ namespace Model
         [Description("Ассортимент"), DataLookup("IdService", "Services")]
         public Guid IdService { get; set; }
 
-        [Description("Описание")]
+        [Description("Описание"), TextSize(230)]
         public string Description { get; set; }
 
-        [Description("Предложение"), DataLookup("IdSentence", "Sentences")]
+        [Description("Предложение"), DataLookup("IdSentence", "Sentences"), TableBrowsable(false), TableFilterable]
         public Guid IdSentence { get; set; }
 
         [Description("Количество")]
@@ -51,5 +52,9 @@ namespace Model
             base.Remove(item);
         }
 
+        public List<Category> FilteredBySentence(Guid idService)
+        {
+            return this.Where(item => item.IdSentence == idService).ToList();
+        }
     }
 }

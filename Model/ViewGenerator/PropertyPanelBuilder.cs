@@ -224,6 +224,7 @@ namespace ViewGenerator
                         break;
                     case "System.Guid":         // для ключевых значений свойств
                         if (row == 0) break;    // принимаем, что если первым в классе объявлено свойство типа Guid - то это ключевое свойство и его не показываем
+                        if (CheckTableFilterableAttribute(userClass, prop)) break;
                         grid.RowCount = row + 1;            // указываем количество строк сетки
                         grid.RowStyles.Add(new RowStyle()); // добавляем стиль строки сетки, с автоматическим изменением размера (поведение по умолчанию)
                         grid.Controls.Add(label, 0, row);   // добавляем метку в первый столбец строки сетки
@@ -399,6 +400,16 @@ namespace ViewGenerator
             var attributes = TypeDescriptor.GetProperties(userClass)[prop.Name].Attributes;
             // получаем из коллекции атрибутов ссылку на атрибут дескриптора свойства
             var mAttribute = (DataNotEmptyAttribute)attributes[typeof(DataNotEmptyAttribute)];
+            // атрибут существует, значит данные должны быть не пустыми
+            return mAttribute != null;
+        }
+
+        private bool CheckTableFilterableAttribute(object userClass, PropertyInfo prop)
+        {
+            // получаем ссылку на коллекцию атрибутов свойства
+            var attributes = TypeDescriptor.GetProperties(userClass)[prop.Name].Attributes;
+            // получаем из коллекции атрибутов ссылку на атрибут дескриптора свойства
+            var mAttribute = (TableFilterableAttribute)attributes[typeof(TableFilterableAttribute)];
             // атрибут существует, значит данные должны быть не пустыми
             return mAttribute != null;
         }

@@ -11,7 +11,7 @@ namespace Model
     {
         public Guid IdSentence { get; set; } = Guid.NewGuid();
 
-        [Description("Наименование"), DataNotEmpty]
+        [Description("Наименование"), DataNotEmpty, TextSize(200)]
         public string Name { get; set; }
 
         [Description("Тип"), DataLookup("IdSentenceType", "SentenceTypes")]

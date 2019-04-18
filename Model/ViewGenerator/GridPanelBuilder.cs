@@ -16,7 +16,7 @@ namespace ViewGenerator
             Error(message, caption);
         }
 
-        public static GridPanel BuildPropertyPanel(object userModel, object userClass, object userCollection)
+        public static GridPanel BuildPropertyPanel(object userModel, object userClass, object userCollection, Guid filterKey = new Guid())
         {
             // заготовка для таблицы записей
             var userControl = new GridPanel
@@ -70,6 +70,9 @@ namespace ViewGenerator
             {
                 // создаём пустой объект требуемого типа
                 var item = Activator.CreateInstance(userClass.GetType());
+
+                //todo: здесь нужно задать значение фильтрованного свойства из filterKey
+
                 // вызываем диалог для заполнения свойств объекта
                 var frm = PropertyPanelBuilder.ShowPropertyFormDialog(userModel, item, userControl.Font.Name, userControl.Font.Size);
                 // если не была нажата клавиша "Ввод", выходим
