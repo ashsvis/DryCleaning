@@ -30,7 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.мастерToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiMaster = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
             this.отчётыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,10 +42,10 @@
             this.tsmiServices = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEditSentences = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiImplementationOrganization = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDictionaries = new System.Windows.Forms.ToolStripMenuItem();
-            this.pnlContainer = new System.Windows.Forms.Panel();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiUsers = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDictionaries = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlContainer = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,28 +67,29 @@
             // менюToolStripMenuItem
             // 
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.мастерToolStripMenuItem,
+            this.tsmiMaster,
             this.toolStripMenuItem1,
             this.tsmiExit});
             this.менюToolStripMenuItem.Name = "менюToolStripMenuItem";
             this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.менюToolStripMenuItem.Text = "Меню";
             // 
-            // мастерToolStripMenuItem
+            // tsmiMaster
             // 
-            this.мастерToolStripMenuItem.Name = "мастерToolStripMenuItem";
-            this.мастерToolStripMenuItem.Size = new System.Drawing.Size(115, 22);
-            this.мастерToolStripMenuItem.Text = "Мастер";
+            this.tsmiMaster.Name = "tsmiMaster";
+            this.tsmiMaster.Size = new System.Drawing.Size(180, 22);
+            this.tsmiMaster.Text = "Мастер";
+            this.tsmiMaster.Click += new System.EventHandler(this.tsmiMaster_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(112, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(115, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(180, 22);
             this.tsmiExit.Text = "Выход";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
@@ -109,7 +110,7 @@
             // прайслистToolStripMenuItem
             // 
             this.прайслистToolStripMenuItem.Name = "прайслистToolStripMenuItem";
-            this.прайслистToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.прайслистToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
             this.прайслистToolStripMenuItem.Text = "Прайс-лист";
             // 
             // действияToolStripMenuItem
@@ -161,6 +162,18 @@
             this.tsmiImplementationOrganization.Text = "Оформить заказ";
             this.tsmiImplementationOrganization.Click += new System.EventHandler(this.tsmiImplementationOrganization_Click);
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(229, 6);
+            // 
+            // tsmiUsers
+            // 
+            this.tsmiUsers.Name = "tsmiUsers";
+            this.tsmiUsers.Size = new System.Drawing.Size(232, 22);
+            this.tsmiUsers.Text = "Пользователи";
+            this.tsmiUsers.Click += new System.EventHandler(this.tsmiUsers_Click);
+            // 
             // tsmiDictionaries
             // 
             this.tsmiDictionaries.Name = "tsmiDictionaries";
@@ -175,18 +188,6 @@
             this.pnlContainer.Name = "pnlContainer";
             this.pnlContainer.Size = new System.Drawing.Size(616, 328);
             this.pnlContainer.TabIndex = 3;
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(229, 6);
-            // 
-            // tsmiUsers
-            // 
-            this.tsmiUsers.Name = "tsmiUsers";
-            this.tsmiUsers.Size = new System.Drawing.Size(232, 22);
-            this.tsmiUsers.Text = "Пользователи";
-            this.tsmiUsers.Click += new System.EventHandler(this.tsmiUsers_Click);
             // 
             // MainForm
             // 
@@ -221,7 +222,7 @@
         private System.Windows.Forms.ToolStripMenuItem отчётыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem документыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem действияToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem мастерToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiMaster;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
         private System.Windows.Forms.ToolStripMenuItem прайслистToolStripMenuItem;

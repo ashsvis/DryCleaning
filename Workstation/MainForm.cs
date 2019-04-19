@@ -115,5 +115,11 @@ namespace Workstation
             if (UsersForm == null) UsersForm = new UsersForm(_root);
             ShowForm(UsersForm);
         }
+
+        private void tsmiMaster_Click(object sender, EventArgs e)
+        {
+            var frm = new MasterForm(_root);
+            frm.ShowDialog(this);
+        }
     }
 }
