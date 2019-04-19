@@ -11,19 +11,19 @@ namespace Model
     {
         public Guid IdImplementation { get; set; } = Guid.NewGuid();
 
-        [Description("Услуга"), DataLookup("IdService", "Services")]
-        public Guid IdService { get; set; }
+        [Description("Предложение"), DataLookup("IdSentence", "Sentences")]
+        public Guid IdSentence { get; set; }
 
         [Description("Клиент"), DataLookup("IdClient", "Clients")]
         public Guid IdClient { get; set; }
 
-        [Description("Сотрудник"), DataLookup("IdEmployee", "Employees")]
+        [Description("Ответственный сотрудник"), DataLookup("IdEmployee", "Employees")]
         public Guid IdEmployee { get; set; }
 
         [Description("Дата реализации")]
         public DateTime ImplementationDate { get; set; }
 
-        [Description("Замечания")]
+        [Description("Замечания"), TextSize(220)]
         public string Notes { get; set; }
 
         public int CompareTo(Implementation other)
@@ -33,7 +33,7 @@ namespace Model
 
         public override string ToString()
         {
-            return $"{IdService}{IdClient}{IdEmployee}{ImplementationDate.ToShortDateString()}";
+            return $"{ImplementationDate.ToShortDateString()}{IdSentence}{IdClient}{IdEmployee}";
         }
     }
 

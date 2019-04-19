@@ -16,6 +16,7 @@ namespace Model
         public Categories Categories { get; set; }
         public Appointments Appointments { get; set; }
         public Genders Genders { get; set; }
+        public Users Users { get; set; }
 
         public Root()
         {
@@ -50,6 +51,9 @@ namespace Model
 
             if (Genders == null) Genders = new Genders();
             RegistryTable("Пол", new Gender(), Genders);
+
+            if (Users == null) Users = new Users();
+            RegistryTable("Пользователи", new User(), Users);
 
         }
 

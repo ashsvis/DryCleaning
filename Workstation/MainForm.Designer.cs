@@ -41,9 +41,11 @@
             this.редактироватьСотрудниковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiServices = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEditSentences = new System.Windows.Forms.ToolStripMenuItem();
-            this.оформитьЗаказToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiImplementationOrganization = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiDictionaries = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlContainer = new System.Windows.Forms.Panel();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,7 +109,7 @@
             // прайслистToolStripMenuItem
             // 
             this.прайслистToolStripMenuItem.Name = "прайслистToolStripMenuItem";
-            this.прайслистToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.прайслистToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.прайслистToolStripMenuItem.Text = "Прайс-лист";
             // 
             // действияToolStripMenuItem
@@ -117,7 +119,9 @@
             this.редактироватьСотрудниковToolStripMenuItem,
             this.tsmiServices,
             this.tsmiEditSentences,
-            this.оформитьЗаказToolStripMenuItem});
+            this.tsmiImplementationOrganization,
+            this.toolStripMenuItem2,
+            this.tsmiUsers});
             this.действияToolStripMenuItem.Name = "действияToolStripMenuItem";
             this.действияToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
             this.действияToolStripMenuItem.Text = "Действия";
@@ -150,11 +154,12 @@
             this.tsmiEditSentences.Text = "Редактировать предложения";
             this.tsmiEditSentences.Click += new System.EventHandler(this.tsmiEditSentences_Click);
             // 
-            // оформитьЗаказToolStripMenuItem
+            // tsmiImplementationOrganization
             // 
-            this.оформитьЗаказToolStripMenuItem.Name = "оформитьЗаказToolStripMenuItem";
-            this.оформитьЗаказToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.оформитьЗаказToolStripMenuItem.Text = "Оформить заказ";
+            this.tsmiImplementationOrganization.Name = "tsmiImplementationOrganization";
+            this.tsmiImplementationOrganization.Size = new System.Drawing.Size(232, 22);
+            this.tsmiImplementationOrganization.Text = "Оформить заказ";
+            this.tsmiImplementationOrganization.Click += new System.EventHandler(this.tsmiImplementationOrganization_Click);
             // 
             // tsmiDictionaries
             // 
@@ -170,6 +175,18 @@
             this.pnlContainer.Name = "pnlContainer";
             this.pnlContainer.Size = new System.Drawing.Size(616, 328);
             this.pnlContainer.TabIndex = 3;
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(229, 6);
+            // 
+            // tsmiUsers
+            // 
+            this.tsmiUsers.Name = "tsmiUsers";
+            this.tsmiUsers.Size = new System.Drawing.Size(232, 22);
+            this.tsmiUsers.Text = "Пользователи";
+            this.tsmiUsers.Click += new System.EventHandler(this.tsmiUsers_Click);
             // 
             // MainForm
             // 
@@ -212,7 +229,9 @@
         private System.Windows.Forms.ToolStripMenuItem редактироватьСотрудниковToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiServices;
         private System.Windows.Forms.ToolStripMenuItem tsmiEditSentences;
-        private System.Windows.Forms.ToolStripMenuItem оформитьЗаказToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiImplementationOrganization;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem tsmiUsers;
     }
 }
 

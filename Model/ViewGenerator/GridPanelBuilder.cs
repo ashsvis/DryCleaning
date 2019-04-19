@@ -49,6 +49,7 @@ namespace ViewGenerator
                 HideSelection = false,
                 ShowItemToolTips = true,
                 VirtualMode = true,
+                GridLines = true,
                 View = View.Details
             };
             var btnEdit = new Button

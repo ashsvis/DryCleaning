@@ -105,6 +105,7 @@
             this.btnRealisation.Text = "Реализация";
             this.btnRealisation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnRealisation.UseVisualStyleBackColor = false;
+            this.btnRealisation.Click += new System.EventHandler(this.btnRealisation_Click);
             // 
             // btnServices
             // 

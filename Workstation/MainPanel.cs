@@ -38,5 +38,11 @@ namespace Workstation
             if (MainForm.SentencesForm == null) MainForm.SentencesForm = new SentencesForm(_root);
             MainForm.ShowForm(MainForm.SentencesForm);
         }
+
+        private void btnRealisation_Click(object sender, EventArgs e)
+        {
+            if (MainForm.ImplementationForm == null) MainForm.ImplementationForm = new ImplementationForm(_root);
+            MainForm.ShowForm(MainForm.ImplementationForm);
+        }
     }
 }

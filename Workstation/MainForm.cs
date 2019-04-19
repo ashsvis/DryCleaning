@@ -15,6 +15,8 @@ namespace Workstation
         public static AppointmentsForm AppointmentsForm;
         public static SentencesForm SentencesForm;
         public static SentenceTypesForm SentenceTypesForm;
+        public static ImplementationForm ImplementationForm;
+        public static UsersForm UsersForm;
 
         public MainForm()
         {
@@ -100,6 +102,18 @@ namespace Workstation
         {
             if (SentencesForm == null) SentencesForm = new SentencesForm(_root);
             ShowForm(SentencesForm);
+        }
+
+        private void tsmiImplementationOrganization_Click(object sender, EventArgs e)
+        {
+            if (ImplementationForm == null) ImplementationForm = new ImplementationForm(_root);
+            ShowForm(ImplementationForm);
+        }
+
+        private void tsmiUsers_Click(object sender, EventArgs e)
+        {
+            if (UsersForm == null) UsersForm = new UsersForm(_root);
+            ShowForm(UsersForm);
         }
     }
 }

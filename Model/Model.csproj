@@ -53,6 +53,7 @@
     <Compile Include="SaverLoader.cs" />
     <Compile Include="Sentence.cs" />
     <Compile Include="SentenceType.cs" />
+    <Compile Include="User.cs" />
     <Compile Include="ViewGenerator\DataLookupAttribute.cs" />
     <Compile Include="ViewGenerator\DataNotEmptyAttribute.cs" />
     <Compile Include="ViewGenerator\DataPasswordAttribute.cs" />
