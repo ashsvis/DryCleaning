@@ -44,8 +44,8 @@
             this.tsmiImplementationOrganization = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiUsers = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmiDictionaries = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlContainer = new System.Windows.Forms.Panel();
+            this.tsmiLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,8 +55,7 @@
             this.менюToolStripMenuItem,
             this.отчётыToolStripMenuItem,
             this.документыToolStripMenuItem,
-            this.действияToolStripMenuItem,
-            this.tsmiDictionaries});
+            this.действияToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -67,6 +66,7 @@
             // менюToolStripMenuItem
             // 
             this.менюToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiLogin,
             this.tsmiMaster,
             this.toolStripMenuItem1,
             this.tsmiExit});
@@ -174,13 +174,6 @@
             this.tsmiUsers.Text = "Пользователи";
             this.tsmiUsers.Click += new System.EventHandler(this.tsmiUsers_Click);
             // 
-            // tsmiDictionaries
-            // 
-            this.tsmiDictionaries.Name = "tsmiDictionaries";
-            this.tsmiDictionaries.Size = new System.Drawing.Size(67, 20);
-            this.tsmiDictionaries.Text = "Словари";
-            this.tsmiDictionaries.DropDownOpening += new System.EventHandler(this.tsmiDictionaries_DropDownOpening);
-            // 
             // pnlContainer
             // 
             this.pnlContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -188,6 +181,13 @@
             this.pnlContainer.Name = "pnlContainer";
             this.pnlContainer.Size = new System.Drawing.Size(616, 328);
             this.pnlContainer.TabIndex = 3;
+            // 
+            // tsmiLogin
+            // 
+            this.tsmiLogin.Name = "tsmiLogin";
+            this.tsmiLogin.Size = new System.Drawing.Size(180, 22);
+            this.tsmiLogin.Text = "Вход...";
+            this.tsmiLogin.Click += new System.EventHandler(this.tsmiLogin_Click);
             // 
             // MainForm
             // 
@@ -217,7 +217,6 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Panel pnlContainer;
-        private System.Windows.Forms.ToolStripMenuItem tsmiDictionaries;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчётыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem документыToolStripMenuItem;
@@ -233,6 +232,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiImplementationOrganization;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem tsmiUsers;
+        private System.Windows.Forms.ToolStripMenuItem tsmiLogin;
     }
 }
 

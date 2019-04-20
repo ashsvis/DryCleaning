@@ -47,23 +47,6 @@ namespace Workstation
             pnlContainer.Controls.Add(mainPanel);
         }
 
-        private void tsmiDictionaries_DropDownOpening(object sender, EventArgs e)
-        {
-            tsmiDictionaries.DropDownItems.Clear();
-            foreach (var tableName in _root.GetTableNames())
-            {
-                var tsmi = new ToolStripMenuItem { Text = tableName };
-                tsmi.Click += (o, arg) =>
-                {
-                    pnlContainer.Controls.Clear();
-                    var tableItem = _root.GetTableInfo(tableName);
-                    if (tableItem != null)
-                        pnlContainer.Controls.Add(GridPanelBuilder.BuildPropertyPanel(_root, tableItem.Item, tableItem.Table));
-                };
-                tsmiDictionaries.DropDownItems.Add(tsmi);
-            }
-        }
-
         private void tsmiExit_Click(object sender, EventArgs e)
         {
             Close();
@@ -122,6 +105,17 @@ namespace Workstation
         {
             var frm = new MasterForm(_root);
             frm.ShowDialog(this);
+        }
+
+        private void tsmiLogin_Click(object sender, EventArgs e)
+        {
+            if (_root.Employees.Count > 0)
+            {
+                var frm = new LoginForm(_root);
+                frm.ShowDialog(this);
+            }
+            else
+                MessageBox.Show("Нет ни одной записи в таблице пользователей");
         }
     }
 }
