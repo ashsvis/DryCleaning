@@ -49,11 +49,11 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCategoryReport = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPriceList = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnEditServices = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnServicesReport = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
@@ -95,6 +95,7 @@
             this.tsmiThisSentenceReport.Name = "tsmiThisSentenceReport";
             this.tsmiThisSentenceReport.Size = new System.Drawing.Size(256, 22);
             this.tsmiThisSentenceReport.Text = "Отчёт по данному предложению";
+            this.tsmiThisSentenceReport.Click += new System.EventHandler(this.btnCategoryReport_Click);
             // 
             // tsmiSummCalculation
             // 
@@ -149,8 +150,9 @@
             // tsmiReportAboutServices
             // 
             this.tsmiReportAboutServices.Name = "tsmiReportAboutServices";
-            this.tsmiReportAboutServices.Size = new System.Drawing.Size(154, 22);
+            this.tsmiReportAboutServices.Size = new System.Drawing.Size(180, 22);
             this.tsmiReportAboutServices.Text = "Отчёт";
+            this.tsmiReportAboutServices.Click += new System.EventHandler(this.btnServicesReport_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -260,7 +262,7 @@
             this.flowLayoutPanel2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel2.AutoSize = true;
             this.flowLayoutPanel2.Controls.Add(this.btnCategoryReport);
-            this.flowLayoutPanel2.Controls.Add(this.button2);
+            this.flowLayoutPanel2.Controls.Add(this.btnPriceList);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 28);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             this.flowLayoutPanel2.Size = new System.Drawing.Size(628, 64);
@@ -280,21 +282,23 @@
             this.btnCategoryReport.Text = "Отчёт по данному пакету";
             this.btnCategoryReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCategoryReport.UseVisualStyleBackColor = false;
+            this.btnCategoryReport.Click += new System.EventHandler(this.btnCategoryReport_Click);
             // 
-            // button2
+            // btnPriceList
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.BackColor = System.Drawing.Color.Gainsboro;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Arial", 11F);
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.Location = new System.Drawing.Point(315, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(306, 58);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Прайс-лист всех предложений";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnPriceList.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnPriceList.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnPriceList.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnPriceList.Font = new System.Drawing.Font("Arial", 11F);
+            this.btnPriceList.Image = ((System.Drawing.Image)(resources.GetObject("btnPriceList.Image")));
+            this.btnPriceList.Location = new System.Drawing.Point(315, 3);
+            this.btnPriceList.Name = "btnPriceList";
+            this.btnPriceList.Size = new System.Drawing.Size(306, 58);
+            this.btnPriceList.TabIndex = 4;
+            this.btnPriceList.Text = "Прайс лист всех предложений";
+            this.btnPriceList.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPriceList.UseVisualStyleBackColor = false;
+            this.btnPriceList.Click += new System.EventHandler(this.btnPriceList_Click);
             // 
             // groupBox3
             // 
@@ -311,7 +315,7 @@
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.Controls.Add(this.btnEditServices);
-            this.flowLayoutPanel3.Controls.Add(this.button4);
+            this.flowLayoutPanel3.Controls.Add(this.btnServicesReport);
             this.flowLayoutPanel3.Location = new System.Drawing.Point(3, 28);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
             this.flowLayoutPanel3.Size = new System.Drawing.Size(625, 46);
@@ -333,20 +337,21 @@
             this.btnEditServices.UseVisualStyleBackColor = false;
             this.btnEditServices.Click += new System.EventHandler(this.tsmiEditServices_Click);
             // 
-            // button4
+            // btnServicesReport
             // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button4.BackColor = System.Drawing.Color.Gainsboro;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Arial", 11F);
-            this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
-            this.button4.Location = new System.Drawing.Point(315, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(306, 40);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Отчёт по ассортименту";
-            this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnServicesReport.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnServicesReport.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnServicesReport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnServicesReport.Font = new System.Drawing.Font("Arial", 11F);
+            this.btnServicesReport.Image = ((System.Drawing.Image)(resources.GetObject("btnServicesReport.Image")));
+            this.btnServicesReport.Location = new System.Drawing.Point(315, 3);
+            this.btnServicesReport.Name = "btnServicesReport";
+            this.btnServicesReport.Size = new System.Drawing.Size(306, 40);
+            this.btnServicesReport.TabIndex = 4;
+            this.btnServicesReport.Text = "Отчёт по ассортименту";
+            this.btnServicesReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnServicesReport.UseVisualStyleBackColor = false;
+            this.btnServicesReport.Click += new System.EventHandler(this.btnServicesReport_Click);
             // 
             // panel1
             // 
@@ -404,10 +409,10 @@
         private System.Windows.Forms.Button btnEditSentence;
         private System.Windows.Forms.Button btnSummCalculation;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPriceList;
         private System.Windows.Forms.Button btnCategoryReport;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnServicesReport;
         private System.Windows.Forms.Button btnEditServices;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;

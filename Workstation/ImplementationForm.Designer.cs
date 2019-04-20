@@ -123,6 +123,7 @@
             this.btnEditSentence.Text = "Оформить чек";
             this.btnEditSentence.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEditSentence.UseVisualStyleBackColor = false;
+            this.btnEditSentence.Click += new System.EventHandler(this.btnEditSentence_Click);
             // 
             // label1
             // 

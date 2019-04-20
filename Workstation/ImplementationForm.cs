@@ -45,5 +45,10 @@ namespace Workstation
             gridPanel.GridSelectedChanged += GridPanel_GridSelectedChanged;
             panel1.Controls.RemoveAt(0);
         }
+
+        private void btnEditSentence_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

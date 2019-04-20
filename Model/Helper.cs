@@ -12,6 +12,12 @@ namespace Model
             _root = root;
         }
 
+        public static string SentenceTypeById(Guid idSentenceType)
+        {
+            var sentenceType = _root.SentenceTypes.FirstOrDefault(item => item.IdSentenceType == idSentenceType);
+            return sentenceType != null ? sentenceType.ToString() : idSentenceType.ToString();
+        }
+
         public static string AppointmentById(Guid idAppointment)
         {
             var appointment = _root.Appointments.FirstOrDefault(item => item.IdAppointment == idAppointment);

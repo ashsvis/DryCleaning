@@ -518,7 +518,7 @@
         AAAAAAAAAAAAAAAAAAAAAAAA
 </value>
   </data>
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnPriceList.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk3qGQAAAAAAADYAAAAoAAAALgAAAC8AAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
         AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -667,7 +667,7 @@
         ////////////////////////////////////////////////////////
 </value>
   </data>
-  <data name="button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btnServicesReport.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         Qk32BgAAAAAAADYAAAAoAAAAGAAAABgAAAABABgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVVRURUVF
         MTEyKSooOjk6Pj4+sbGx////+/v7////nJydOzs8ODk6LCwsKiwsJygoNjY2QkJBzc3N/////v7+////
