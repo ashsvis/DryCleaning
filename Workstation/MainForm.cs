@@ -19,6 +19,7 @@ namespace Workstation
         public static SentenceTypesForm SentenceTypesForm;
         public static ImplementationForm ImplementationForm;
         public static UsersForm UsersForm;
+        public static StatisticsForm StatisticsForm;
 
         private bool _loggedIn = true; // не забудь перевести в false
 
@@ -137,6 +138,36 @@ namespace Workstation
             {
                 item.Enabled = _loggedIn;
             }
+        }
+
+        private void tsmiPriceList_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var app = new Microsoft.Office.Interop.Word.Application();
+                var filename = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Reports", "Pricelist.docx");
+                var oDoc = app.Documents.Add(filename);
+                oDoc.Application.Visible = true;
+                var row = 1;
+                foreach (var sentence in _root.Sentences)
+                {
+                    oDoc.Bookmarks[$"s{row}1"].Range.Text = sentence.Name;
+                    oDoc.Bookmarks[$"s{row}2"].Range.Text = Helper.SentenceTypeNameById(sentence.IdSentenceType);
+                    oDoc.Bookmarks[$"s{row}3"].Range.Text = sentence.Price.ToString();
+                    row++;
+                }
+                Application.OpenForms[0].SendToBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Ошибка");
+            }
+        }
+
+        private void tsmiReports_Click(object sender, EventArgs e)
+        {
+            if (StatisticsForm == null) StatisticsForm = new StatisticsForm(_root);
+            ShowForm(StatisticsForm);
         }
     }
 }

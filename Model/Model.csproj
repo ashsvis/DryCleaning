@@ -50,6 +50,10 @@
     <Compile Include="Gender.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Implementation.cs" />
+    <Compile Include="Reports\Report.cs" />
+    <Compile Include="Reports\ReportColumns.cs" />
+    <Compile Include="Reports\ReportRow.cs" />
+    <Compile Include="Reports\ReportsBuilder.cs" />
     <Compile Include="Root.cs" />
     <Compile Include="SaverLoader.cs" />
     <Compile Include="Sentence.cs" />

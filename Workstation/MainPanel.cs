@@ -44,5 +44,11 @@ namespace Workstation
             if (MainForm.ImplementationForm == null) MainForm.ImplementationForm = new ImplementationForm(_root);
             MainForm.ShowForm(MainForm.ImplementationForm);
         }
+
+        private void btnStatistics_Click(object sender, EventArgs e)
+        {
+            if (MainForm.StatisticsForm == null) MainForm.StatisticsForm = new StatisticsForm(_root);
+            MainForm.ShowForm(MainForm.StatisticsForm);
+        }
     }
 }

@@ -77,7 +77,7 @@
             // tsmiLogin
             // 
             this.tsmiLogin.Name = "tsmiLogin";
-            this.tsmiLogin.Size = new System.Drawing.Size(180, 22);
+            this.tsmiLogin.Size = new System.Drawing.Size(115, 22);
             this.tsmiLogin.Text = "Вход...";
             this.tsmiLogin.Click += new System.EventHandler(this.tsmiLogin_Click);
             // 
@@ -85,19 +85,19 @@
             // 
             this.tsmiMaster.Enabled = false;
             this.tsmiMaster.Name = "tsmiMaster";
-            this.tsmiMaster.Size = new System.Drawing.Size(180, 22);
+            this.tsmiMaster.Size = new System.Drawing.Size(115, 22);
             this.tsmiMaster.Text = "Мастер";
             this.tsmiMaster.Click += new System.EventHandler(this.tsmiMaster_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(112, 6);
             // 
             // tsmiExit
             // 
             this.tsmiExit.Name = "tsmiExit";
-            this.tsmiExit.Size = new System.Drawing.Size(180, 22);
+            this.tsmiExit.Size = new System.Drawing.Size(115, 22);
             this.tsmiExit.Text = "Выход";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
@@ -107,6 +107,7 @@
             this.tsmiReports.Name = "tsmiReports";
             this.tsmiReports.Size = new System.Drawing.Size(60, 20);
             this.tsmiReports.Text = "Отчёты";
+            this.tsmiReports.Click += new System.EventHandler(this.tsmiReports_Click);
             // 
             // документыToolStripMenuItem
             // 
@@ -122,6 +123,7 @@
             this.tsmiPriceList.Name = "tsmiPriceList";
             this.tsmiPriceList.Size = new System.Drawing.Size(180, 22);
             this.tsmiPriceList.Text = "Прайс-лист";
+            this.tsmiPriceList.Click += new System.EventHandler(this.tsmiPriceList_Click);
             // 
             // tsmiActions
             // 
