@@ -1,5 +1,6 @@
 ﻿using Model;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 using ViewGenerator;
 
@@ -19,7 +20,7 @@ namespace Workstation
             panel1.Controls.Add(panel);
             panel2.Controls.Add(GridPanelBuilder.BuildPropertyPanel(root, new Category(), 
                 root.Categories.FilteredBySentence(Guid.Empty)));
-            btnEmployeesReport.Enabled = btnCategoryReport.Enabled = panel2.Enabled = false;
+            btnSummCalculation.Enabled = btnCategoryReport.Enabled = panel2.Enabled = false;
         }
 
         private void Panel_GridSelectedChanged(object obj)
@@ -29,13 +30,13 @@ namespace Workstation
             {
                 panel2.Controls.Add(GridPanelBuilder.BuildPropertyPanel(_root, new Category(), _root.Categories,
                     _root.Categories.FilteredBySentence(_sentence.IdSentence), "IdSentence", _sentence.IdSentence));
-                btnEmployeesReport.Enabled = btnCategoryReport.Enabled = panel2.Enabled = true;
+                btnSummCalculation.Enabled = btnCategoryReport.Enabled = panel2.Enabled = true;
             }
             else
             {
                 panel2.Controls.Add(GridPanelBuilder.BuildPropertyPanel(_root, new Category(),
                     _root.Categories.FilteredBySentence(Guid.Empty)));
-                btnEmployeesReport.Enabled = btnCategoryReport.Enabled = panel2.Enabled = false;
+                btnSummCalculation.Enabled = btnCategoryReport.Enabled = panel2.Enabled = false;
             }
             panel2.Controls.RemoveAt(0);
         }
@@ -61,7 +62,26 @@ namespace Workstation
         private void tsmiProduct_DropDownOpening(object sender, EventArgs e)
         {
             tsmiThisSentenceReport.Enabled = tsmiSummCalculation.Enabled =
-                btnEmployeesReport.Enabled = btnCategoryReport.Enabled = _sentence != null;
+                btnSummCalculation.Enabled = btnCategoryReport.Enabled = _sentence != null;
+        }
+
+        private void btnSummCalculation_Click(object sender, EventArgs e)
+        {
+            if (_sentence == null) return;
+            decimal summ = 0;
+            foreach (var category in _root.Categories.FilteredBySentence(_sentence.IdSentence))
+            {
+                var quantity = category.Quantity;
+                var service = _root.Services.FirstOrDefault(item => item.IdService == category.IdService);
+                if (service == null) continue;
+                summ += quantity * service.Price;
+            }
+            _sentence.Price = summ;
+            // обновить данные
+            var panel = GridPanelBuilder.BuildPropertyPanel(_root, new Sentence(), _root.Sentences);
+            panel.GridSelectedChanged += Panel_GridSelectedChanged;
+            panel1.Controls.Add(panel);
+            panel1.Controls.RemoveAt(0);
         }
     }
 }

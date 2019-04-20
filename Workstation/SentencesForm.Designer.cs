@@ -44,7 +44,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.btnEmployeesReport = new System.Windows.Forms.Button();
+            this.btnSummCalculation = new System.Windows.Forms.Button();
             this.btnEditSentence = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
@@ -101,6 +101,7 @@
             this.tsmiSummCalculation.Name = "tsmiSummCalculation";
             this.tsmiSummCalculation.Size = new System.Drawing.Size(256, 22);
             this.tsmiSummCalculation.Text = "Вычислить сумму";
+            this.tsmiSummCalculation.Click += new System.EventHandler(this.btnSummCalculation_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -202,27 +203,28 @@
             // 
             this.flowLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.Controls.Add(this.btnEmployeesReport);
+            this.flowLayoutPanel1.Controls.Add(this.btnSummCalculation);
             this.flowLayoutPanel1.Controls.Add(this.btnEditSentence);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 24);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(627, 64);
             this.flowLayoutPanel1.TabIndex = 5;
             // 
-            // btnEmployeesReport
+            // btnSummCalculation
             // 
-            this.btnEmployeesReport.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnEmployeesReport.BackColor = System.Drawing.Color.Gainsboro;
-            this.btnEmployeesReport.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnEmployeesReport.Font = new System.Drawing.Font("Arial", 11F);
-            this.btnEmployeesReport.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployeesReport.Image")));
-            this.btnEmployeesReport.Location = new System.Drawing.Point(3, 3);
-            this.btnEmployeesReport.Name = "btnEmployeesReport";
-            this.btnEmployeesReport.Size = new System.Drawing.Size(306, 58);
-            this.btnEmployeesReport.TabIndex = 4;
-            this.btnEmployeesReport.Text = "Вычислить сумму по списку";
-            this.btnEmployeesReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEmployeesReport.UseVisualStyleBackColor = false;
+            this.btnSummCalculation.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnSummCalculation.BackColor = System.Drawing.Color.Gainsboro;
+            this.btnSummCalculation.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSummCalculation.Font = new System.Drawing.Font("Arial", 11F);
+            this.btnSummCalculation.Image = ((System.Drawing.Image)(resources.GetObject("btnSummCalculation.Image")));
+            this.btnSummCalculation.Location = new System.Drawing.Point(3, 3);
+            this.btnSummCalculation.Name = "btnSummCalculation";
+            this.btnSummCalculation.Size = new System.Drawing.Size(306, 58);
+            this.btnSummCalculation.TabIndex = 4;
+            this.btnSummCalculation.Text = "Вычислить сумму по списку";
+            this.btnSummCalculation.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSummCalculation.UseVisualStyleBackColor = false;
+            this.btnSummCalculation.Click += new System.EventHandler(this.btnSummCalculation_Click);
             // 
             // btnEditSentence
             // 
@@ -399,7 +401,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnEditSentence;
-        private System.Windows.Forms.Button btnEmployeesReport;
+        private System.Windows.Forms.Button btnSummCalculation;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnCategoryReport;
