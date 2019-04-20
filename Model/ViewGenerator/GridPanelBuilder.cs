@@ -239,6 +239,12 @@ namespace ViewGenerator
                 e.Item = new ListViewItem();
                 // получаем ссылку на коллекцию
                 var collection = (IEnumerable<object>)(userFilteredCollection != null ? userFilteredCollection : userCollection);
+                if (e.ItemIndex >= collection.Count())
+                {
+                    for (var i = 1; i < lv.Columns.Count; i++)
+                        e.Item.SubItems.Add("");
+                    return;
+                }
                 // получаем ссылку на рисуемый элемент
                 var item = collection.ElementAt(e.ItemIndex);
                 // получаем его тип

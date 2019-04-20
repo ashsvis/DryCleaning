@@ -68,20 +68,17 @@ namespace Workstation
         private void btnSummCalculation_Click(object sender, EventArgs e)
         {
             if (_sentence == null) return;
-            decimal summ = 0;
-            foreach (var category in _root.Categories.FilteredBySentence(_sentence.IdSentence))
-            {
-                var quantity = category.Quantity;
-                var service = _root.Services.FirstOrDefault(item => item.IdService == category.IdService);
-                if (service == null) continue;
-                summ += quantity * service.Price;
-            }
-            _sentence.Price = summ;
+            _sentence.Price = Helper.CalculateSentencePrice(_sentence);
             // обновить данные
             var panel = GridPanelBuilder.BuildPropertyPanel(_root, new Sentence(), _root.Sentences);
             panel.GridSelectedChanged += Panel_GridSelectedChanged;
             panel1.Controls.Add(panel);
             panel1.Controls.RemoveAt(0);
+        }
+
+        private void tsmiClose_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

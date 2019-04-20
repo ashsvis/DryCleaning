@@ -95,7 +95,6 @@
             // 
             // btnEnter
             // 
-            this.btnEnter.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnEnter.Enabled = false;
             this.btnEnter.Location = new System.Drawing.Point(210, 107);
             this.btnEnter.Name = "btnEnter";
@@ -103,6 +102,7 @@
             this.btnEnter.TabIndex = 3;
             this.btnEnter.Text = "Вход";
             this.btnEnter.UseVisualStyleBackColor = true;
+            this.btnEnter.Click += new System.EventHandler(this.btnEnter_Click);
             // 
             // btnCancel
             // 
@@ -116,7 +116,6 @@
             // 
             // LoginForm
             // 
-            this.AcceptButton = this.btnEnter;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;

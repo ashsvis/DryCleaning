@@ -23,5 +23,18 @@ namespace Model
             var sentence = _root.Sentences.FirstOrDefault(item => item.IdSentence == idSentence);
             return sentence != null ? sentence.ToString() : idSentence.ToString();
         }
+
+        public static decimal CalculateSentencePrice(Sentence sentence)
+        {
+            decimal summ = 0;
+            foreach (var category in _root.Categories.FilteredBySentence(sentence.IdSentence))
+            {
+                var quantity = category.Quantity;
+                var service = _root.Services.FirstOrDefault(item => item.IdService == category.IdService);
+                if (service == null) continue;
+                summ += quantity * service.Price;
+            }
+            return summ;
+        }
     }
 }

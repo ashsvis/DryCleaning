@@ -30,13 +30,14 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMaster = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчётыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiReports = new System.Windows.Forms.ToolStripMenuItem();
             this.документыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.прайслистToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.действияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiPriceList = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiActions = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiClients = new System.Windows.Forms.ToolStripMenuItem();
             this.редактироватьСотрудниковToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiServices = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +46,6 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmiUsers = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlContainer = new System.Windows.Forms.Panel();
-            this.tsmiLogin = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,9 +53,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.менюToolStripMenuItem,
-            this.отчётыToolStripMenuItem,
+            this.tsmiReports,
             this.документыToolStripMenuItem,
-            this.действияToolStripMenuItem});
+            this.tsmiActions});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -74,8 +74,16 @@
             this.менюToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.менюToolStripMenuItem.Text = "Меню";
             // 
+            // tsmiLogin
+            // 
+            this.tsmiLogin.Name = "tsmiLogin";
+            this.tsmiLogin.Size = new System.Drawing.Size(180, 22);
+            this.tsmiLogin.Text = "Вход...";
+            this.tsmiLogin.Click += new System.EventHandler(this.tsmiLogin_Click);
+            // 
             // tsmiMaster
             // 
+            this.tsmiMaster.Enabled = false;
             this.tsmiMaster.Name = "tsmiMaster";
             this.tsmiMaster.Size = new System.Drawing.Size(180, 22);
             this.tsmiMaster.Text = "Мастер";
@@ -93,29 +101,31 @@
             this.tsmiExit.Text = "Выход";
             this.tsmiExit.Click += new System.EventHandler(this.tsmiExit_Click);
             // 
-            // отчётыToolStripMenuItem
+            // tsmiReports
             // 
-            this.отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
-            this.отчётыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.отчётыToolStripMenuItem.Text = "Отчёты";
+            this.tsmiReports.Enabled = false;
+            this.tsmiReports.Name = "tsmiReports";
+            this.tsmiReports.Size = new System.Drawing.Size(60, 20);
+            this.tsmiReports.Text = "Отчёты";
             // 
             // документыToolStripMenuItem
             // 
             this.документыToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.прайслистToolStripMenuItem});
+            this.tsmiPriceList});
             this.документыToolStripMenuItem.Name = "документыToolStripMenuItem";
             this.документыToolStripMenuItem.Size = new System.Drawing.Size(82, 20);
             this.документыToolStripMenuItem.Text = "Документы";
             // 
-            // прайслистToolStripMenuItem
+            // tsmiPriceList
             // 
-            this.прайслистToolStripMenuItem.Name = "прайслистToolStripMenuItem";
-            this.прайслистToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.прайслистToolStripMenuItem.Text = "Прайс-лист";
+            this.tsmiPriceList.Enabled = false;
+            this.tsmiPriceList.Name = "tsmiPriceList";
+            this.tsmiPriceList.Size = new System.Drawing.Size(180, 22);
+            this.tsmiPriceList.Text = "Прайс-лист";
             // 
-            // действияToolStripMenuItem
+            // tsmiActions
             // 
-            this.действияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiActions.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiClients,
             this.редактироватьСотрудниковToolStripMenuItem,
             this.tsmiServices,
@@ -123,9 +133,10 @@
             this.tsmiImplementationOrganization,
             this.toolStripMenuItem2,
             this.tsmiUsers});
-            this.действияToolStripMenuItem.Name = "действияToolStripMenuItem";
-            this.действияToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.действияToolStripMenuItem.Text = "Действия";
+            this.tsmiActions.Name = "tsmiActions";
+            this.tsmiActions.Size = new System.Drawing.Size(70, 20);
+            this.tsmiActions.Text = "Действия";
+            this.tsmiActions.DropDownOpening += new System.EventHandler(this.tsmiActions_DropDownOpening);
             // 
             // tsmiClients
             // 
@@ -182,13 +193,6 @@
             this.pnlContainer.Size = new System.Drawing.Size(616, 328);
             this.pnlContainer.TabIndex = 3;
             // 
-            // tsmiLogin
-            // 
-            this.tsmiLogin.Name = "tsmiLogin";
-            this.tsmiLogin.Size = new System.Drawing.Size(180, 22);
-            this.tsmiLogin.Text = "Вход...";
-            this.tsmiLogin.Click += new System.EventHandler(this.tsmiLogin_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -218,13 +222,13 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Panel pnlContainer;
         private System.Windows.Forms.ToolStripMenuItem менюToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem отчётыToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiReports;
         private System.Windows.Forms.ToolStripMenuItem документыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem действияToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiActions;
         private System.Windows.Forms.ToolStripMenuItem tsmiMaster;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tsmiExit;
-        private System.Windows.Forms.ToolStripMenuItem прайслистToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiPriceList;
         private System.Windows.Forms.ToolStripMenuItem tsmiClients;
         private System.Windows.Forms.ToolStripMenuItem редактироватьСотрудниковToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiServices;

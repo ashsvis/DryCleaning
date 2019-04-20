@@ -1,6 +1,7 @@
 ﻿using Model;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using ViewGenerator;
 
@@ -9,6 +10,7 @@ namespace Workstation
     public partial class MainForm : Form
     {
         private Root _root = new Root();
+        private MainPanel _mainPanel;
         public static ServicesForm ServicesForm;
         public static ClientsForm ClientsForm;
         public static EmployeesForm EmployeesForm;
@@ -17,6 +19,8 @@ namespace Workstation
         public static SentenceTypesForm SentenceTypesForm;
         public static ImplementationForm ImplementationForm;
         public static UsersForm UsersForm;
+
+        private bool _loggedIn;
 
         public MainForm()
         {
@@ -43,8 +47,9 @@ namespace Workstation
             }
             // подгрузка заставки
             pnlContainer.Controls.Clear();
-            var mainPanel = new MainPanel(_root);
-            pnlContainer.Controls.Add(mainPanel);
+            _mainPanel = new MainPanel(_root);
+            pnlContainer.Controls.Add(_mainPanel);
+            _mainPanel.Enabled = false;
         }
 
         private void tsmiExit_Click(object sender, EventArgs e)
@@ -112,10 +117,26 @@ namespace Workstation
             if (_root.Employees.Count > 0)
             {
                 var frm = new LoginForm(_root);
-                frm.ShowDialog(this);
+                var lastLogin = _loggedIn;
+                _loggedIn = frm.ShowDialog(this) == DialogResult.OK;
+                if (lastLogin) _loggedIn = lastLogin;
+                UpdateInterface();
             }
             else
                 MessageBox.Show("Нет ни одной записи в таблице пользователей");
+        }
+
+        private void UpdateInterface()
+        {
+            _mainPanel.Enabled = tsmiMaster.Enabled = tsmiReports.Enabled = tsmiPriceList.Enabled = _loggedIn;
+        }
+
+        private void tsmiActions_DropDownOpening(object sender, EventArgs e)
+        {
+            foreach (var item in tsmiActions.DropDownItems.OfType<ToolStripMenuItem>())
+            {
+                item.Enabled = _loggedIn;
+            }
         }
     }
 }

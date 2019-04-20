@@ -33,7 +33,7 @@ namespace Model
 
         public override string ToString()
         {
-            return $"{ImplementationDate.ToShortDateString()}{IdSentence}{IdClient}{IdEmployee}";
+            return $"{ImplementationDate.ToString()}{IdSentence}{IdClient}{IdEmployee}";
         }
     }
 

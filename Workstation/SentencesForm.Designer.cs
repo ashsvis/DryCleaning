@@ -113,6 +113,7 @@
             this.tsmiClose.Name = "tsmiClose";
             this.tsmiClose.Size = new System.Drawing.Size(256, 22);
             this.tsmiClose.Text = "Закрыть";
+            this.tsmiClose.Click += new System.EventHandler(this.tsmiClose_Click);
             // 
             // видыПредложенийToolStripMenuItem
             // 
