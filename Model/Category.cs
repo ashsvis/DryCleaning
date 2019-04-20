@@ -31,7 +31,7 @@ namespace Model
 
         public override string ToString()
         {
-            return $"{IdService}{IdSentence}";
+            return $"{Helper.ServiceById(IdService)} ({Helper.SentenceById(IdSentence)})";
         }
     }
 

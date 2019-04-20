@@ -21,6 +21,7 @@ namespace Workstation
         public MainForm()
         {
             InitializeComponent();
+            Helper.DefineRoot(_root);
             GridPanelBuilder.Error += GridPanelBuilder_Error;
         }
 
@@ -37,6 +38,7 @@ namespace Workstation
             if (File.Exists(fileName))
             {
                 _root = SaverLoader.LoadFromFile(fileName);
+                Helper.DefineRoot(_root);
                 _root.RegistryTables();
             }
             // подгрузка заставки

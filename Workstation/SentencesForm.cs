@@ -27,8 +27,8 @@ namespace Workstation
             _sentence = (Sentence)obj;
             if (_sentence != null)
             {
-                panel2.Controls.Add(GridPanelBuilder.BuildPropertyPanel(_root, new Category(),
-                    _root.Categories.FilteredBySentence(_sentence.IdSentence), _sentence.IdSentence));
+                panel2.Controls.Add(GridPanelBuilder.BuildPropertyPanel(_root, new Category(), _root.Categories,
+                    _root.Categories.FilteredBySentence(_sentence.IdSentence), "IdSentence", _sentence.IdSentence));
                 btnEmployeesReport.Enabled = btnCategoryReport.Enabled = panel2.Enabled = true;
             }
             else

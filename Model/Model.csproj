@@ -48,6 +48,7 @@
     <Compile Include="Client.cs" />
     <Compile Include="Employee.cs" />
     <Compile Include="Gender.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Implementation.cs" />
     <Compile Include="Root.cs" />
     <Compile Include="SaverLoader.cs" />

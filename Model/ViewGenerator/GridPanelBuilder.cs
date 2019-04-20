@@ -16,7 +16,8 @@ namespace ViewGenerator
             Error(message, caption);
         }
 
-        public static GridPanel BuildPropertyPanel(object userModel, object userClass, object userCollection, Guid filterKey = new Guid())
+        public static GridPanel BuildPropertyPanel(object userModel, object userClass, object userCollection,
+            object userFilteredCollection = null, string propertyName = null, Guid propertyValue = new Guid())
         {
             // заготовка для таблицы записей
             var userControl = new GridPanel
@@ -72,12 +73,18 @@ namespace ViewGenerator
                 // создаём пустой объект требуемого типа
                 var item = Activator.CreateInstance(userClass.GetType());
 
-                //todo: здесь нужно задать значение фильтрованного свойства из filterKey
+                // задаём значение фильтрованного свойства из propertyName и propertyValue
+                if (userFilteredCollection != null && !string.IsNullOrWhiteSpace(propertyName) && propertyValue != Guid.Empty)
+                {
+                    PropertyInfo piInstance = item.GetType().GetProperty(propertyName);
+                    piInstance.SetValue(item, propertyValue);
+                }
 
                 // вызываем диалог для заполнения свойств объекта
                 var frm = PropertyPanelBuilder.ShowPropertyFormDialog(userModel, item, userControl.Font.Name, userControl.Font.Size);
                 // если не была нажата клавиша "Ввод", выходим
                 if (frm.DialogResult != DialogResult.OK) return;
+
                 // формируем данные для вызова метода Add коллекции объектов:
                 // заказываем типы параметров для вызова метода
                 Type[] parameterTypes = { item.GetType() };
@@ -89,16 +96,20 @@ namespace ViewGenerator
                 {
                     // вызываем метод на коллекции объектов с аргументами
                     method.Invoke(userCollection, arguments);
+                    if (userFilteredCollection != null)
+                    {
+                        method = userFilteredCollection.GetType().GetMethod("Add", parameterTypes);
+                        method.Invoke(userFilteredCollection, arguments);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    if (ex.InnerException != null)
-                        OnError(ex.InnerException.Message, "Добавление записи");
-                    else
-                        OnError(ex.Message, "Добавление записи");
+                    OnError(ex.InnerException != null 
+                        ? ex.InnerException.Message 
+                        : ex.Message, "Добавление записи");
                 }
                 listView.VirtualListSize = 0; // сбросим виртуальный размер
-                listView.VirtualListSize = ((IEnumerable<object>)userCollection).Count(); // установим размер по размеру коллекции
+                listView.VirtualListSize = ((IEnumerable<object>)(userFilteredCollection != null ? userFilteredCollection : userCollection)).Count(); // установим размер по размеру коллекции
                 listView.Invalidate(); // просим обновить вид
                 btnEdit.Enabled = btnDelete.Enabled = false;
                 userControl.OnGridSelectedChanged(item);
@@ -114,7 +125,7 @@ namespace ViewGenerator
             {
                 if (listView.SelectedIndices.Count == 0) return;
                 // получаем ссылку на коллекцию
-                var collection = (IEnumerable<object>)userCollection;
+                var collection = (IEnumerable<object>)(userFilteredCollection != null ? userFilteredCollection : userCollection);
                 // получаем ссылку на редактируемый элемент
                 var item = collection.ElementAt(listView.SelectedIndices[0]);
                 // вызываем диалог для заполнения свойств объекта
@@ -131,7 +142,7 @@ namespace ViewGenerator
                                     MessageBoxButtons.YesNo, MessageBoxIcon.Warning,
                                     MessageBoxDefaultButton.Button2) != DialogResult.Yes) return;
                 // получаем ссылку на коллекцию
-                var collection = (IEnumerable<object>)userCollection;
+                var collection = (IEnumerable<object>)(userFilteredCollection != null ? userFilteredCollection : userCollection);
                 // получаем ссылку на редактируемый элемент
                 var item = collection.ElementAt(listView.SelectedIndices[0]);
                 // формируем данные для вызова метода Add коллекции объектов:
@@ -143,8 +154,13 @@ namespace ViewGenerator
                 object[] arguments = { item };
                 // вызываем метод на коллекции объектов с аргументами
                 method.Invoke(userCollection, arguments);
+                if (userFilteredCollection != null)
+                {
+                    method = userFilteredCollection.GetType().GetMethod("Remove", parameterTypes);
+                    method.Invoke(userFilteredCollection, arguments);
+                }
                 listView.VirtualListSize = 0; // сбросим виртуальный размер
-                listView.VirtualListSize = ((IEnumerable<object>)userCollection).Count(); // установим размер по размеру коллекции
+                listView.VirtualListSize = ((IEnumerable<object>)(userFilteredCollection != null ? userFilteredCollection : userCollection)).Count(); // установим размер по размеру коллекции
                 listView.Invalidate(); // просим обновить вид
                 btnEdit.Enabled = btnDelete.Enabled = false;
                 userControl.OnGridSelectedChanged(null);
@@ -222,7 +238,7 @@ namespace ViewGenerator
                 var lv = (ListView)o;
                 e.Item = new ListViewItem();
                 // получаем ссылку на коллекцию
-                var collection = (IEnumerable<object>)userCollection;
+                var collection = (IEnumerable<object>)(userFilteredCollection != null ? userFilteredCollection : userCollection);
                 // получаем ссылку на рисуемый элемент
                 var item = collection.ElementAt(e.ItemIndex);
                 // получаем его тип
@@ -271,7 +287,7 @@ namespace ViewGenerator
             {
                 // e.Text содержит строковое представление объекта (перегрузкой метода ToString())
                 // получаем ссылку на коллекцию
-                var collection = (IEnumerable<object>)userCollection;
+                var collection = (IEnumerable<object>)(userFilteredCollection != null ? userFilteredCollection : userCollection);
                 var n = 0;
                 foreach (var item in collection)
                 {
@@ -284,7 +300,7 @@ namespace ViewGenerator
                 }
             };
             // указываем размер коллекции
-            listView.VirtualListSize = ((IEnumerable<object>)userCollection).Count();
+            listView.VirtualListSize = ((IEnumerable<object>)(userFilteredCollection != null ? userFilteredCollection : userCollection)).Count();
             // разрешаем кнопки редактирования
             listView.SelectedIndexChanged += (o, e) => 
             {
@@ -292,7 +308,7 @@ namespace ViewGenerator
                 btnEdit.Enabled = btnDelete.Enabled = lv.SelectedIndices.Count > 0;
                 if (lv.SelectedIndices.Count > 0)
                 {
-                    var collection = (IEnumerable<object>)userCollection;
+                    var collection = (IEnumerable<object>)(userFilteredCollection != null ? userFilteredCollection : userCollection);
                     var item = collection.ElementAt(lv.SelectedIndices[0]);
                     userControl.OnGridSelectedChanged(item);
                 }
