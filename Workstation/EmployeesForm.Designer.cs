@@ -107,6 +107,7 @@
             this.btnEmployeesReport.Text = "Отчёт по персоналу";
             this.btnEmployeesReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEmployeesReport.UseVisualStyleBackColor = false;
+            this.btnEmployeesReport.Click += new System.EventHandler(this.btnEmployeesReport_Click);
             // 
             // btnBuildCard
             // 
@@ -123,6 +124,7 @@
             this.btnBuildCard.Text = "Сформировать личную карточку";
             this.btnBuildCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBuildCard.UseVisualStyleBackColor = false;
+            this.btnBuildCard.Click += new System.EventHandler(this.btnBuildCard_Click);
             // 
             // label1
             // 
@@ -200,30 +202,30 @@
             // tsmiSelectPhoto
             // 
             this.tsmiSelectPhoto.Name = "tsmiSelectPhoto";
-            this.tsmiSelectPhoto.Size = new System.Drawing.Size(180, 22);
+            this.tsmiSelectPhoto.Size = new System.Drawing.Size(161, 22);
             this.tsmiSelectPhoto.Text = "Выбрать фото...";
             // 
             // tsmiEmployeeCard
             // 
             this.tsmiEmployeeCard.Name = "tsmiEmployeeCard";
-            this.tsmiEmployeeCard.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEmployeeCard.Size = new System.Drawing.Size(161, 22);
             this.tsmiEmployeeCard.Text = "Карточка";
             // 
             // tsmiEmployeeReport
             // 
             this.tsmiEmployeeReport.Name = "tsmiEmployeeReport";
-            this.tsmiEmployeeReport.Size = new System.Drawing.Size(180, 22);
+            this.tsmiEmployeeReport.Size = new System.Drawing.Size(161, 22);
             this.tsmiEmployeeReport.Text = "Отчёт";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(158, 6);
             // 
             // tsmiClose
             // 
             this.tsmiClose.Name = "tsmiClose";
-            this.tsmiClose.Size = new System.Drawing.Size(180, 22);
+            this.tsmiClose.Size = new System.Drawing.Size(161, 22);
             this.tsmiClose.Text = "Закрыть";
             this.tsmiClose.Click += new System.EventHandler(this.tsmiClose_Click);
             // 

@@ -1,4 +1,5 @@
 ﻿using Model;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -95,6 +96,65 @@ namespace Workstation
         private void tsmiEmployees_DropDownOpening(object sender, System.EventArgs e)
         {
             tsmiSelectPhoto.Enabled = tsmiEmployeeCard.Enabled = _employee != null;
+        }
+
+        private void btnEmployeesReport_Click(object sender, System.EventArgs e)
+        {
+            try
+            {
+                var app = new Microsoft.Office.Interop.Word.Application();
+                var filename = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Reports", "Employees.docx");
+                var oDoc = app.Documents.Add(filename);
+                oDoc.Application.Visible = true;
+                var row = 1;
+                foreach (var employee in _root.Employees)
+                {
+                    oDoc.Bookmarks[$"s{row}1"].Range.Text = employee.Surname;
+                    oDoc.Bookmarks[$"s{row}2"].Range.Text = employee.FirstName;
+                    oDoc.Bookmarks[$"s{row}3"].Range.Text = employee.LastName;
+                    oDoc.Bookmarks[$"s{row}4"].Range.Text = employee.ReceiptDate.ToShortDateString();
+                    oDoc.Bookmarks[$"s{row}5"].Range.Text = employee.Address;
+                    oDoc.Bookmarks[$"s{row}6"].Range.Text = employee.PhoneNumber;
+                    oDoc.Bookmarks[$"s{row}7"].Range.Text = employee.Passport;
+                    row++;
+                }
+                Application.OpenForms[0].SendToBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Ошибка");
+            }
+        }
+
+        private void btnBuildCard_Click(object sender, EventArgs e)
+        {
+            if (_employee == null) return;
+            try
+            {
+                var app = new Microsoft.Office.Interop.Excel.Application();
+                var filename = Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), "Reports", "Employee.xltx");
+                var wb = app.Workbooks.Open(filename, 0, true);
+                app.Application.Visible = true;
+                var sheet = wb.Sheets[1];
+                sheet.Cells[8, 2] = "ООО ФИРМА";
+                sheet.Cells[13, 3] = _employee.PersonnelNumber;
+                sheet.Cells[13, 4] = _employee.TIN;
+                sheet.Cells[13, 5] = _employee.PensionCertificate;
+                sheet.Cells[13, 9] = Helper.GenderById(_employee.IdGender);
+                sheet.Cells[19, 9] = _employee.ReceiptDate.ToShortDateString();
+                sheet.Cells[20, 3] = _employee.Surname;
+                sheet.Cells[20, 6] = _employee.FirstName;
+                sheet.Cells[20, 9] = _employee.LastName;
+                sheet.Cells[21, 4] = _employee.BirthDay.ToShortDateString();
+                sheet.Cells[23, 4] = _employee.BirthPlace;
+                sheet.Cells[26, 4] = _employee.Education;
+                sheet.Cells[29, 4] = Helper.AppointmentById(_employee.IdAppointment);
+                Application.OpenForms[0].SendToBack();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Ошибка");
+            }
         }
     }
 }

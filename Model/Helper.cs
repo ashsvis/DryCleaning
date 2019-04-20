@@ -12,6 +12,18 @@ namespace Model
             _root = root;
         }
 
+        public static string AppointmentById(Guid idAppointment)
+        {
+            var appointment = _root.Appointments.FirstOrDefault(item => item.IdAppointment == idAppointment);
+            return appointment != null ? appointment.ToString() : idAppointment.ToString();
+        }
+
+        public static string GenderById(Guid idGender)
+        {
+            var gender = _root.Genders.FirstOrDefault(item => item.IdGender == idGender);
+            return gender != null ? gender.ToString() : idGender.ToString();
+        }
+
         public static string ServiceById(Guid idService)
         {
             var service = _root.Services.FirstOrDefault(item => item.IdService == idService);
