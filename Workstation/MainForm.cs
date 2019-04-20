@@ -20,7 +20,7 @@ namespace Workstation
         public static ImplementationForm ImplementationForm;
         public static UsersForm UsersForm;
 
-        private bool _loggedIn;
+        private bool _loggedIn = true; // не забудь перевести в false
 
         public MainForm()
         {

@@ -108,6 +108,7 @@
             this.btnClientsReport.Text = "Отчёт по клиентам";
             this.btnClientsReport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnClientsReport.UseVisualStyleBackColor = false;
+            this.btnClientsReport.Click += new System.EventHandler(this.btnClientsReport_Click);
             // 
             // btnPrintCard
             // 
@@ -123,6 +124,7 @@
             this.btnPrintCard.Text = "Распечатать карточку";
             this.btnPrintCard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPrintCard.UseVisualStyleBackColor = false;
+            this.btnPrintCard.Click += new System.EventHandler(this.btnPrintCard_Click);
             // 
             // menuStrip1
             // 
@@ -150,24 +152,24 @@
             // tsmiClientCard
             // 
             this.tsmiClientCard.Name = "tsmiClientCard";
-            this.tsmiClientCard.Size = new System.Drawing.Size(180, 22);
+            this.tsmiClientCard.Size = new System.Drawing.Size(125, 22);
             this.tsmiClientCard.Text = "Карточка";
             // 
             // tsmiClientReport
             // 
             this.tsmiClientReport.Name = "tsmiClientReport";
-            this.tsmiClientReport.Size = new System.Drawing.Size(180, 22);
+            this.tsmiClientReport.Size = new System.Drawing.Size(125, 22);
             this.tsmiClientReport.Text = "Отчёт";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(122, 6);
             // 
             // tsmiClose
             // 
             this.tsmiClose.Name = "tsmiClose";
-            this.tsmiClose.Size = new System.Drawing.Size(180, 22);
+            this.tsmiClose.Size = new System.Drawing.Size(125, 22);
             this.tsmiClose.Text = "Закрыть";
             this.tsmiClose.Click += new System.EventHandler(this.tsmiClose_Click);
             // 
