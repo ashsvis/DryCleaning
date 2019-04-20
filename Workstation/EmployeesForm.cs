@@ -140,7 +140,7 @@ namespace Workstation
                 sheet.Cells[13, 3] = _employee.PersonnelNumber;
                 sheet.Cells[13, 4] = _employee.TIN;
                 sheet.Cells[13, 5] = _employee.PensionCertificate;
-                sheet.Cells[13, 9] = Helper.GenderById(_employee.IdGender);
+                sheet.Cells[13, 9] = Helper.GenderNameById(_employee.IdGender);
                 sheet.Cells[19, 9] = _employee.ReceiptDate.ToShortDateString();
                 sheet.Cells[20, 3] = _employee.Surname;
                 sheet.Cells[20, 6] = _employee.FirstName;
@@ -148,7 +148,7 @@ namespace Workstation
                 sheet.Cells[21, 4] = _employee.BirthDay.ToShortDateString();
                 sheet.Cells[23, 4] = _employee.BirthPlace;
                 sheet.Cells[26, 4] = _employee.Education;
-                sheet.Cells[29, 4] = Helper.AppointmentById(_employee.IdAppointment);
+                sheet.Cells[29, 4] = Helper.AppointmentNameById(_employee.IdAppointment);
                 Application.OpenForms[0].SendToBack();
             }
             catch (Exception ex)

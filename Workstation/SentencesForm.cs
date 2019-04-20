@@ -94,7 +94,7 @@ namespace Workstation
                 foreach (var sentence in _root.Sentences)
                 {
                     oDoc.Bookmarks[$"s{row}1"].Range.Text = sentence.Name;
-                    oDoc.Bookmarks[$"s{row}2"].Range.Text = Helper.SentenceTypeById(sentence.IdSentenceType);
+                    oDoc.Bookmarks[$"s{row}2"].Range.Text = Helper.SentenceTypeNameById(sentence.IdSentenceType);
                     oDoc.Bookmarks[$"s{row}3"].Range.Text = sentence.Price.ToString();
                     row++;
                 }
@@ -139,12 +139,12 @@ namespace Workstation
                 var oDoc = app.Documents.Add(filename);
                 oDoc.Application.Visible = true;
                 oDoc.Bookmarks[$"h1"].Range.Text = _sentence.Name;
-                oDoc.Bookmarks[$"h2"].Range.Text = Helper.SentenceTypeById(_sentence.IdSentenceType);
+                oDoc.Bookmarks[$"h2"].Range.Text = Helper.SentenceTypeNameById(_sentence.IdSentenceType);
                 oDoc.Bookmarks[$"h3"].Range.Text = _sentence.Price.ToString();
                 var row = 1;
                 foreach (var category in _root.Categories.FilteredBySentence(_sentence.IdSentence))
                 {
-                    oDoc.Bookmarks[$"s{row}1"].Range.Text = Helper.ServiceById(category.IdService);
+                    oDoc.Bookmarks[$"s{row}1"].Range.Text = Helper.ServiceNameById(category.IdService);
                     oDoc.Bookmarks[$"s{row}2"].Range.Text = category.Description;
                     oDoc.Bookmarks[$"s{row}3"].Range.Text = category.Quantity.ToString();
                     row++;
