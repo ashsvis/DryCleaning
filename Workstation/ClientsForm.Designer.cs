@@ -145,28 +145,29 @@
             this.tsmiClients.Name = "tsmiClients";
             this.tsmiClients.Size = new System.Drawing.Size(67, 20);
             this.tsmiClients.Text = "Клиенты";
+            this.tsmiClients.DropDownOpening += new System.EventHandler(this.tsmiClients_DropDownOpening);
             // 
             // tsmiClientCard
             // 
             this.tsmiClientCard.Name = "tsmiClientCard";
-            this.tsmiClientCard.Size = new System.Drawing.Size(125, 22);
+            this.tsmiClientCard.Size = new System.Drawing.Size(180, 22);
             this.tsmiClientCard.Text = "Карточка";
             // 
             // tsmiClientReport
             // 
             this.tsmiClientReport.Name = "tsmiClientReport";
-            this.tsmiClientReport.Size = new System.Drawing.Size(125, 22);
+            this.tsmiClientReport.Size = new System.Drawing.Size(180, 22);
             this.tsmiClientReport.Text = "Отчёт";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(122, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // tsmiClose
             // 
             this.tsmiClose.Name = "tsmiClose";
-            this.tsmiClose.Size = new System.Drawing.Size(125, 22);
+            this.tsmiClose.Size = new System.Drawing.Size(180, 22);
             this.tsmiClose.Text = "Закрыть";
             this.tsmiClose.Click += new System.EventHandler(this.tsmiClose_Click);
             // 

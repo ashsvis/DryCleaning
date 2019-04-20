@@ -8,6 +8,7 @@ namespace Workstation
     public partial class SentencesForm : Form
     {
         private Root _root;
+        private Sentence _sentence;
 
         public SentencesForm(Root root)
         {
@@ -18,23 +19,23 @@ namespace Workstation
             panel1.Controls.Add(panel);
             panel2.Controls.Add(GridPanelBuilder.BuildPropertyPanel(root, new Category(), 
                 root.Categories.FilteredBySentence(Guid.Empty)));
-            btnCategoryReport.Enabled = panel2.Enabled = false;
+            btnEmployeesReport.Enabled = btnCategoryReport.Enabled = panel2.Enabled = false;
         }
 
         private void Panel_GridSelectedChanged(object obj)
         {
-            var sentence = (Sentence)obj;
-            if (sentence != null)
+            _sentence = (Sentence)obj;
+            if (_sentence != null)
             {
                 panel2.Controls.Add(GridPanelBuilder.BuildPropertyPanel(_root, new Category(),
-                    _root.Categories.FilteredBySentence(sentence.IdSentence), sentence.IdSentence));
-                btnCategoryReport.Enabled = panel2.Enabled = true;
+                    _root.Categories.FilteredBySentence(_sentence.IdSentence), _sentence.IdSentence));
+                btnEmployeesReport.Enabled = btnCategoryReport.Enabled = panel2.Enabled = true;
             }
             else
             {
                 panel2.Controls.Add(GridPanelBuilder.BuildPropertyPanel(_root, new Category(),
                     _root.Categories.FilteredBySentence(Guid.Empty)));
-                btnCategoryReport.Enabled = panel2.Enabled = false;
+                btnEmployeesReport.Enabled = btnCategoryReport.Enabled = panel2.Enabled = false;
             }
             panel2.Controls.RemoveAt(0);
         }
@@ -55,6 +56,12 @@ namespace Workstation
         {
             if (MainForm.SentenceTypesForm == null) MainForm.SentenceTypesForm = new SentenceTypesForm(_root);
             MainForm.ShowForm(MainForm.SentenceTypesForm);
+        }
+
+        private void tsmiProduct_DropDownOpening(object sender, EventArgs e)
+        {
+            tsmiThisSentenceReport.Enabled = tsmiSummCalculation.Enabled =
+                btnEmployeesReport.Enabled = btnCategoryReport.Enabled = _sentence != null;
         }
     }
 }

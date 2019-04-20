@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SentencesForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.товарToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiProduct = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiThisSentenceReport = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSummCalculation = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
@@ -69,7 +69,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.товарToolStripMenuItem,
+            this.tsmiProduct,
             this.видыПредложенийToolStripMenuItem,
             this.ассортиментToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -78,16 +78,17 @@
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // товарToolStripMenuItem
+            // tsmiProduct
             // 
-            this.товарToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiProduct.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmiThisSentenceReport,
             this.tsmiSummCalculation,
             this.toolStripMenuItem1,
             this.tsmiClose});
-            this.товарToolStripMenuItem.Name = "товарToolStripMenuItem";
-            this.товарToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.товарToolStripMenuItem.Text = "Товар";
+            this.tsmiProduct.Name = "tsmiProduct";
+            this.tsmiProduct.Size = new System.Drawing.Size(52, 20);
+            this.tsmiProduct.Text = "Товар";
+            this.tsmiProduct.DropDownOpening += new System.EventHandler(this.tsmiProduct_DropDownOpening);
             // 
             // tsmiThisSentenceReport
             // 
@@ -408,7 +409,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-        private System.Windows.Forms.ToolStripMenuItem товарToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiProduct;
         private System.Windows.Forms.ToolStripMenuItem видыПредложенийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ассортиментToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsmiEditServices;

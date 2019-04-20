@@ -42,11 +42,11 @@ namespace Workstation
 
         private void Panel_GridSelectedChanged(object obj)
         {
-            if (obj != null)
+            _employee = (Employee)obj;
+            if (_employee != null)
             {
                 btnBuildCard.Enabled = true;
                 btnSelectPhoto.Enabled = true;
-                _employee = (Employee)obj;
                 if (_employee.Photo != null && _employee.Photo.Length > 0)
                     pbPhoto.Image = CreateImage(_employee.Photo);
                 else
@@ -54,7 +54,6 @@ namespace Workstation
             }
             else
             {
-                _employee = null;
                 btnBuildCard.Enabled = false;
                 btnSelectPhoto.Enabled = false;
                 pbPhoto.Image = null;
@@ -93,5 +92,9 @@ namespace Workstation
             }
         }
 
+        private void tsmiEmployees_DropDownOpening(object sender, System.EventArgs e)
+        {
+            tsmiSelectPhoto.Enabled = tsmiEmployeeCard.Enabled = _employee != null;
+        }
     }
 }

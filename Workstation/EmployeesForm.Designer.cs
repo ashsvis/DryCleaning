@@ -195,34 +195,35 @@
             this.tsmiEmployees.Name = "tsmiEmployees";
             this.tsmiEmployees.Size = new System.Drawing.Size(85, 20);
             this.tsmiEmployees.Text = "Сотрудники";
+            this.tsmiEmployees.DropDownOpening += new System.EventHandler(this.tsmiEmployees_DropDownOpening);
             // 
             // tsmiSelectPhoto
             // 
             this.tsmiSelectPhoto.Name = "tsmiSelectPhoto";
-            this.tsmiSelectPhoto.Size = new System.Drawing.Size(161, 22);
+            this.tsmiSelectPhoto.Size = new System.Drawing.Size(180, 22);
             this.tsmiSelectPhoto.Text = "Выбрать фото...";
             // 
             // tsmiEmployeeCard
             // 
             this.tsmiEmployeeCard.Name = "tsmiEmployeeCard";
-            this.tsmiEmployeeCard.Size = new System.Drawing.Size(161, 22);
+            this.tsmiEmployeeCard.Size = new System.Drawing.Size(180, 22);
             this.tsmiEmployeeCard.Text = "Карточка";
             // 
             // tsmiEmployeeReport
             // 
             this.tsmiEmployeeReport.Name = "tsmiEmployeeReport";
-            this.tsmiEmployeeReport.Size = new System.Drawing.Size(161, 22);
+            this.tsmiEmployeeReport.Size = new System.Drawing.Size(180, 22);
             this.tsmiEmployeeReport.Text = "Отчёт";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(158, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
             // 
             // tsmiClose
             // 
             this.tsmiClose.Name = "tsmiClose";
-            this.tsmiClose.Size = new System.Drawing.Size(161, 22);
+            this.tsmiClose.Size = new System.Drawing.Size(180, 22);
             this.tsmiClose.Text = "Закрыть";
             this.tsmiClose.Click += new System.EventHandler(this.tsmiClose_Click);
             // 
