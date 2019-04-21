@@ -77,7 +77,7 @@ namespace Database
             return result;
         }
 
-        public void ReplaceInto(string table, Dictionary<string, string> columns)
+        public void InsertInto(string table, Dictionary<string, string> columns)
         {
             // формирование запроса для изменения
             var props = new List<string>();
@@ -89,7 +89,7 @@ namespace Database
                 //if (value.Length > 250) value = value.Substring(0, 250);
                 values.Add($"'{value}'");
             }
-            var sql = $"replace into `{table}` ({string.Join(",", props)}) values ({string.Join(",", values)})";
+            var sql = $"INSERT INTO `{table}` ({string.Join(",", props)}) VALUES ({string.Join(",", values)})";
             ExecSQL(sql);
         }
 

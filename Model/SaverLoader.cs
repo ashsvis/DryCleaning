@@ -69,23 +69,38 @@ namespace Model
                             break;
                     }
                     if (tableName == "Appointments" && 
-                        (info.Name == "Description" || info.Name == "JobDescription"))
+                        (info.Name == "Description" || info.Name == "JobDescription") ||
+                        tableName == "Employees" && info.Name == "Photo")
                         coltype = "LONGBLOB";
-                    list.Add($"`{info.Name}` {coltype} NOT NULL");
+                    list.Add($"`{info.Name}` {coltype}");
                 }
                 var createSQL = $"CREATE TABLE IF NOT EXISTS `{tableName}` ({string.Join(", ", list)}) ENGINE = MYISAM";
                 DatabaseSettings.CreateTable(database, createSQL);
+                DatabaseSettings.EmptyTable(database, tableName);
                 // получаем ссылку на коллекцию
                 var collection = (IEnumerable<object>)tableInfo.Table;
                 foreach (var item in collection)
                 {
                     type = item.GetType();
                     m = type.GetProperties();
+                    var columns = new Dictionary<string, string>();
                     foreach (var info in m)
                     {
                         var prop = type.GetProperty(info.Name);
-
+                        if (prop.PropertyType == typeof(DateTime))
+                            columns.Add(info.Name, ((DateTime)prop.GetValue(item)).ToString("O"));
+                        else if (prop.PropertyType == typeof(bool))
+                            columns.Add(info.Name, ((bool)prop.GetValue(item)).ToString());
+                        else if (prop.PropertyType == typeof(decimal))
+                            columns.Add(info.Name, ((decimal)prop.GetValue(item)).ToString("0.00"));
+                        else if (prop.PropertyType == typeof(int))
+                            columns.Add(info.Name, ((int)prop.GetValue(item)).ToString("0"));
+                        else if (prop.PropertyType == typeof(string))
+                            columns.Add(info.Name, prop.GetValue(item)?.ToString());
+                        else if (prop.PropertyType == typeof(Guid))
+                            columns.Add(info.Name, ((Guid)prop.GetValue(item)).ToString());
                     }
+                    DatabaseSettings.UpdateTable(database, tableName, columns);
                 }
 
             }

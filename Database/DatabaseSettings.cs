@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Database
 {
@@ -70,6 +71,51 @@ namespace Database
             return false;
         }
 
+        public static bool UpdateTable(string database, string table, Dictionary<string, string> columns)
+        {
+            using (ServerSQL server = new ServerSQL(true, database))
+            {
+                if (server.Connected)
+                {
+                    try
+                    {
+                        server.ExecSQL("USE " + database);
+                        server.ExecSQL("SET CHARSET cp1251");
+                        server.InsertInto(table, columns);
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        lasterrorString = e.Message;
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static bool EmptyTable(string database, string table)
+        {
+            using (ServerSQL server = new ServerSQL(true, database))
+            {
+                if (server.Connected)
+                {
+                    try
+                    {
+                        server.ExecSQL("USE " + database);
+                        server.ExecSQL($"DELETE FROM `{table}`");
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        lasterrorString = e.Message;
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+
         public static string Database
         {
             get { return Properties.Settings.Default.Database; }
@@ -124,6 +170,5 @@ namespace Database
                 settings.Save();
             }
         }
-
     }
 }
