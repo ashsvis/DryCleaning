@@ -22,10 +22,6 @@ namespace Model
         public Root()
         {
             RegistryTables();
-            if (DatabaseSettings.CreateDatabase("drycleaner"))
-            {
-                //DatabaseSettings.RestoreTables("drycleaner");
-            }
         }
 
         public void RegistryTables()

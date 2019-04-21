@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using MySql.Data.MySqlClient;
 
 namespace Database
@@ -95,6 +96,72 @@ namespace Database
             }
             var sql = $"INSERT INTO `{table}` ({string.Join(",", props)}) VALUES ({string.Join(",", values)})";
             ExecSQL(sql, columns);
+        }
+
+        public void SelectFrom(string table, Dictionary<string, Type> columns, object modelClass, object modelTable)
+        {
+            // получаем ссылку на коллекцию
+            var collection = (IEnumerable<object>)modelTable;
+            // создаём пустой объект требуемого типа
+            var item = Activator.CreateInstance(modelClass.GetType());
+            // формируем данные для вызова метода Add коллекции объектов:
+            // заказываем типы параметров для вызова метода
+            Type[] parameterTypes = { item.GetType() };
+            // создаём ссылку на метод Add, с формальным списком параметров 
+            MethodInfo method = collection.GetType().GetMethod("Add", parameterTypes);
+
+            var list = new List<string>();
+            foreach (var key in columns.Keys)
+                list.Add($"`{key}`");
+            string SQL = $"SELECT {string.Join(",", list)} FROM `{table}`";
+            using (MySqlCommand command = new MySqlCommand(SQL, myConnection))
+            {
+                using (MySqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            // создаём пустой объект требуемого типа
+                            item = Activator.CreateInstance(modelClass.GetType());
+
+                            for (var col = 0; col < reader.FieldCount; col++)
+                            {
+                                var propName = list[col].Trim('`');
+                                PropertyInfo piInstance = item.GetType().GetProperty(propName);
+                                var type = piInstance.PropertyType;
+                                var value = reader.GetValue(col);
+                                if (type == typeof(DateTime))
+                                    piInstance.SetValue(item, Convert.ToDateTime(value));
+                                else if (type == typeof(bool))
+                                    piInstance.SetValue(item, Convert.ToBoolean(value));
+                                else if (type == typeof(decimal))
+                                    piInstance.SetValue(item, Convert.ToDecimal(value, 
+                                        System.Globalization.CultureInfo.GetCultureInfo("en-US")));
+                                else if (type == typeof(int))
+                                    piInstance.SetValue(item, Convert.ToInt32(value));
+                                else if (type == typeof(string))
+                                    piInstance.SetValue(item, Convert.ToString(value));
+                                else if (type == typeof(Guid))
+                                    piInstance.SetValue(item, Guid.Parse(Convert.ToString(value)));
+                            }
+                            // формируем массив значений параметров для передачи при вызове метода
+                            object[] arguments = { item };
+                            try
+                            {
+                                // вызываем метод на коллекции объектов с аргументами
+                                method.Invoke(collection, arguments);
+                            }
+                            catch (Exception ex)
+                            {
+                                lasterrorString = ex.InnerException != null
+                                    ? ex.InnerException.Message
+                                    : ex.Message;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         public static bool HostIsLocalhost()

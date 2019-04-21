@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Database
 {
@@ -59,6 +60,29 @@ namespace Database
                         server.ExecSQL("USE " + database);
                         server.ExecSQL("SET CHARSET cp1251");
                         server.ExecSQL(createSQL);
+                        return true;
+                    }
+                    catch (Exception e)
+                    {
+                        lasterrorString = e.Message;
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static bool SelectTable(string database, string table, Dictionary<string, Type> columns, object modelClass, object modelTable)
+        {
+            using (ServerSQL server = new ServerSQL(true, database))
+            {
+                if (server.Connected)
+                {
+                    try
+                    {
+                        server.ExecSQL("USE " + database);
+                        server.ExecSQL("SET CHARSET cp1251");
+                        server.SelectFrom(table, columns, modelClass, modelTable);
                         return true;
                     }
                     catch (Exception e)

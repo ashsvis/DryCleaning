@@ -43,6 +43,27 @@ namespace Model
             }
         }
 
+        public static bool RestoreTables(Root root)
+        {
+            var database = "drycleaner";
+            if (!DatabaseSettings.CreateDatabase(database)) return false;
+
+            foreach (var tableName in root.GetTableNames())
+            {
+                var tableInfo = root.GetTableInfo(tableName);
+                var type = tableInfo.Item.GetType();
+                MemberInfo[] m = type.GetProperties();
+                var columns = new Dictionary<string, Type>();
+                foreach (var info in m)
+                {
+                    var prop = type.GetProperty(info.Name);
+                    columns.Add(info.Name, prop.PropertyType);
+                }
+                DatabaseSettings.SelectTable(database, tableName, columns, tableInfo.Item, tableInfo.Table);
+            }
+            return false;
+        }
+
         public static bool StoreTables(Root root)
         {
             var database = "drycleaner";
@@ -88,18 +109,6 @@ namespace Model
                     {
                         var prop = type.GetProperty(info.Name);
                         columns.Add(info.Name, prop.GetValue(item));
-                        //if (prop.PropertyType == typeof(DateTime))
-                        //    columns.Add(info.Name, ((DateTime)prop.GetValue(item)).ToString("O"));
-                        //else if (prop.PropertyType == typeof(bool))
-                        //    columns.Add(info.Name, ((bool)prop.GetValue(item)).ToString());
-                        //else if (prop.PropertyType == typeof(decimal))
-                        //    columns.Add(info.Name, ((decimal)prop.GetValue(item)).ToString("0.00"));
-                        //else if (prop.PropertyType == typeof(int))
-                        //    columns.Add(info.Name, ((int)prop.GetValue(item)).ToString("0"));
-                        //else if (prop.PropertyType == typeof(string))
-                        //    columns.Add(info.Name, prop.GetValue(item)?.ToString());
-                        //else if (prop.PropertyType == typeof(Guid))
-                        //    columns.Add(info.Name, ((Guid)prop.GetValue(item)).ToString());
                     }
                     DatabaseSettings.UpdateTable(database, tableName, columns);
                 }

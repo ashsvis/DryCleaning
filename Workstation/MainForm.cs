@@ -39,12 +39,15 @@ namespace Workstation
         {
             CenterToScreen();
             // загрузка базы
-            var fileName = Path.ChangeExtension(Application.ExecutablePath, ".bin");
-            if (File.Exists(fileName))
+            if (!SaverLoader.RestoreTables(_root))
             {
-                _root = SaverLoader.LoadFromFile(fileName);
-                Helper.DefineRoot(_root);
-                _root.RegistryTables();
+                var fileName = Path.ChangeExtension(Application.ExecutablePath, ".bin");
+                if (File.Exists(fileName))
+                {
+                    _root = SaverLoader.LoadFromFile(fileName);
+                    Helper.DefineRoot(_root);
+                    _root.RegistryTables();
+                }
             }
             // подгрузка заставки
             pnlContainer.Controls.Clear();
