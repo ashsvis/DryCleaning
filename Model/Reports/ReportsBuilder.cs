@@ -70,148 +70,100 @@ namespace Model
             return report;
         }
 
-        /*
-
-        /// <summary>
-        /// Формирование отчёта по свободным номерам на указанную дату
-        /// </summary>
-        /// <param name="hotel"></param>
-        /// <param name="date"></param>
-        /// <returns></returns>
-        public Report GetEmptyRoomsByDate(Hotel hotel, DateTime date)
+        public static Report GetPayByEmployees(Root root, DateTime first, DateTime last)
         {
-            var report = new Report
-                {
-                    Caption = string.Format($"Список свободных номеров на {date.ToShortDateString()}")
-                };
-            report.ReportColumns.Add("Номер комнаты", "Примечание");
-            // заполнение строк отчёта
-            foreach (var room in hotel.Rooms.OrderBy(item => item.RoomNumber))
-            {
-                // подсчет занятых мест в номере для заданного диапазона
-                var count = hotel.Reservations.Where(item => date >= item.ArrivalDate && date < item.DepartureDate.AddDays(1))
-                                 .Count(item => item.IdRoom == room.IdRoom);
-                if (room.NumberSeat - count ==  0) continue; // нет свободных мест
-                var status = count != 0 ? string.Format($"ещё свободно мест: {room.NumberSeat - count}") : "";
-                var category = hotel.Categories[room.IdCategory];
-                report.ReportRows.Add($"{room.RoomNumber} ({category})", status);
-            }
-            return report;
-        }
-
-        /// <summary>
-        /// Формирование отчёта по занятым номерам на указанную дату
-        /// </summary>
-        /// <param name="hotel"></param>
-        /// <param name="date"></param>
-        /// <returns></returns>
-        public Report GetBusyRoomsByDate(Hotel hotel, DateTime date)
-        {
-            var report = new Report
-            {
-                Caption = string.Format($"Список занятых номеров на {date.ToShortDateString()}")
-            };
-            report.ReportColumns.Add("Номер комнаты", "Примечание");
-            // заполнение строк отчёта
-            foreach (var room in hotel.Reservations.Where(item => date >= item.ArrivalDate && date < item.DepartureDate.AddDays(1))
-                                                   .Select(item => hotel.GetRoom(item.IdRoom))
-                                                   .Distinct()
-                                                   .OrderBy(item => item.RoomNumber))
-            {
-                // подсчет занятых мест в номере для заданного диапазона
-                var count = hotel.Reservations.Where(item => date >= item.ArrivalDate && date < item.DepartureDate.AddDays(1))
-                                 .Count(item => item.IdRoom == room.IdRoom);
-                var status = room.NumberSeat - count != 0 ? string.Format($"ещё свободно мест: {room.NumberSeat - count}") : "";
-                var category = hotel.Categories[room.IdCategory];
-                report.ReportRows.Add($"{room.RoomNumber} ({category})", status);
-            }
-            return report;
-        }
-
-        /// <summary>
-        /// Формирование отчёта по клиентам на указанную дату
-        /// </summary>
-        /// <param name="hotel"></param>
-        /// <param name="date"></param>
-        /// <returns></returns>
-        public Report GetClientsByDate(Hotel hotel, DateTime date)
-        {
-            var report = new Report
-            {
-                Caption = string.Format($"Список постоятельцев на {date.ToShortDateString()}")
-            };
-            report.ReportColumns.Add("Фамилия клиента", "Номер комнаты");
-            // заполнение строк отчёта
-            foreach (var item in hotel.Reservations
-                                      .Where(item => date >= item.ArrivalDate && date < item.DepartureDate.AddDays(1))
-                                      .OrderBy(item => hotel.GetClient(item.IdClient).Surname))
-            {
-                var client = hotel.GetClient(item.IdClient);
-                var room = hotel.GetRoom(item.IdRoom);
-                var category = hotel.Categories[room.IdCategory];
-                report.ReportRows.Add($"{client.Surname} {client.Name} {client.LastName}", $"{room.RoomNumber} ({category})");
-            }
-            return report;
-        }
-
-        /// <summary>
-        /// Список постояльцев за последний месяц
-        /// </summary>
-        /// <param name="hotel"></param>
-        /// <returns></returns>
-        public Report GetClientsByLastMonth(Hotel hotel)
-        {
-            var report = new Report
-            {
-                Caption = "Список постояльцев за последний месяц"
-            };
-            report.ReportColumns.Add("Фамилия клиента", "Номер комнаты", "Въезд", "Выезд");
-            var last = DateTime.Now;
-            var first = new DateTime(last.Year, last.Month, 1);
-            // заполнение строк отчёта
-            foreach (var item in hotel.Reservations
-                                      .Where(item => item.ArrivalDate >= first && item.ArrivalDate <= last ||
-                                                     item.DepartureDate >= first && item.DepartureDate <= last)
-                                      .OrderBy(item => hotel.GetClient(item.IdClient).Surname))
-            {
-                var client = hotel.GetClient(item.IdClient);
-                var room = hotel.GetRoom(item.IdRoom);
-                var category = hotel.Categories[room.IdCategory];
-                report.ReportRows.Add($"{client.Surname} {client.Name} {client.LastName}", $"{room.RoomNumber} ({category})", 
-                                      item.ArrivalDate.ToShortDateString(), item.DepartureDate.ToShortDateString());
-            }
-            return report;
-        }
-
-        /// <summary>
-        /// Список постояльцев за указанную дату
-        /// </summary>
-        /// <param name="hotel"></param>
-        /// <returns></returns>
-        public Report GetClientsByDate(Hotel hotel, DateTime first, DateTime last)
-        {
-            var caption = string.Format("Список постояльцев за период с {0} по {1}",
+            var caption = string.Format("Выплаты сотрудникам за период с {0} по {1}",
                                         first.ToShortDateString(),
                                         last.ToShortDateString());
             var report = new Report
             {
                 Caption = caption
             };
-            report.ReportColumns.Add("Фамилия клиента", "Номер комнаты", "Въезд", "Выезд");
+            report.ReportColumns.Add("Фамилия, имя и отчество", "Итог", "Прожажи", "Процент от прожаж");
             // заполнение строк отчёта
-            foreach (var item in hotel.Reservations
-                                      .Where(item => item.ArrivalDate >= first && item.ArrivalDate <= last ||
-                                                     item.DepartureDate >= first && item.DepartureDate <= last)
-                                      .OrderBy(item => item.ArrivalDate))
+            foreach (var groupItem in root.Implementations
+                          .Where(item => item.ImplementationDate.Date >= first.Date &&
+                                 item.ImplementationDate.Date <= last.Date)
+                          .OrderBy(item => Helper.EmployeeById(item.IdEmployee)?.ToString())
+                          .GroupBy(item => item.IdEmployee))
             {
-                var client = hotel.GetClient(item.IdClient);
-                var room = hotel.GetRoom(item.IdRoom);
-                var category = hotel.Categories[room.IdCategory];
-                report.ReportRows.Add($"{client.Surname} {client.Name} {client.LastName}", $"{room.RoomNumber} ({category})",
-                                      item.ArrivalDate.ToShortDateString(), item.DepartureDate.ToShortDateString());
+                var employee = Helper.EmployeeById(groupItem.Key);
+                if (employee == null) continue;
+                decimal sum = 0;
+                foreach (var implementation in groupItem)
+                {
+                    var sentence = Helper.SentenceById(implementation.IdSentence);
+                    if (sentence == null) continue;
+                    sum += sentence.Price;
+                }
+                var appointment = Helper.AppointmentById(employee.IdAppointment);
+                if (appointment == null) continue;
+                var value = sum * appointment.SalesPercentage / 100;
+                if (value > 0)
+                    report.ReportRows.Add($"{employee}", $"{value}", $"{sum}", $"{appointment.SalesPercentage}");
             }
             return report;
         }
-        */
+
+        public static Report GetImplementationsByServices(Root root, DateTime first, DateTime last)
+        {
+            var caption = string.Format("Выручка по ассортименту за период с {0} по {1}",
+                                        first.ToShortDateString(),
+                                        last.ToShortDateString());
+            var report = new Report
+            {
+                Caption = caption
+            };
+            report.ReportColumns.Add("Наименование", "Итого");
+            // заполнение строк отчёта
+            foreach (var service in root.Services)
+            {
+                decimal sum = 0;
+                foreach (var implementation in root.Implementations
+                                               .Where(item => item.ImplementationDate.Date >= first.Date &&
+                                                              item.ImplementationDate.Date <= last.Date))
+                {
+                    var sentence = Helper.SentenceById(implementation.IdSentence);
+                    if (sentence == null) continue;
+                    foreach (var category in root.Categories.FilteredBySentence(sentence.IdSentence)
+                                             .Where(item => item.IdService == service.IdService))
+                        sum += service.Price * category.Quantity;
+                }
+                if (sum > 0)
+                    report.ReportRows.Add($"{service}", $"{sum}");
+            }
+
+            return report;
+        }
+
+        public static Report GetImplementationsBySentenceTypes(Root root, DateTime first, DateTime last)
+        {
+            var caption = string.Format("Продажи по классам предложений за период с {0} по {1}",
+                                        first.ToShortDateString(),
+                                        last.ToShortDateString());
+            var report = new Report
+            {
+                Caption = caption
+            };
+            report.ReportColumns.Add("Наименование", "Итог");
+            // заполнение строк отчёта
+            foreach (var groupItem in root.Implementations
+                                      .Where(item => item.ImplementationDate.Date >= first.Date &&
+                                             item.ImplementationDate.Date <= last.Date)
+                                      .GroupBy(item => Helper.SentenceById(item.IdSentence).IdSentenceType))
+            {
+                var sentenceTypeName = Helper.SentenceTypeNameById(groupItem.Key);
+                decimal sum = 0;
+                foreach (var implementation in groupItem)
+                {
+                    var sentence = Helper.SentenceById(implementation.IdSentence);
+                    if (sentence == null) continue;
+                    sum += sentence.Price;
+                }
+                report.ReportRows.Add($"{sentenceTypeName}", $"{sum}");
+            }
+            return report;
+        }
+
     }
 }

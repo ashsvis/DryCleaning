@@ -67,6 +67,11 @@ namespace Model
             return _root.Sentences.FirstOrDefault(item => item.IdSentence == idSentence);
         }
 
+        public static Appointment AppointmentById(Guid idAppointment)
+        {
+            return _root.Appointments.FirstOrDefault(item => item.IdAppointment == idAppointment);
+        }
+
         public static decimal CalculateSentencePrice(Sentence sentence)
         {
             decimal summ = 0;

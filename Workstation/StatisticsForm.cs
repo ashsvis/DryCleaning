@@ -52,6 +52,38 @@ namespace Workstation
                         listView2.Items.Add(lvi);
                     }
                     break;
+                case 2:
+                    report = ReportsBuilder.GetImplementationsBySentenceTypes(_root, dtpFromDate.Value, dtpToDate.Value);
+                    listView3.Items.Clear();
+                    foreach (var row in report.ReportRows)
+                    {
+                        var lvi = new ListViewItem(row.Items[0]);
+                        lvi.SubItems.Add(row.Items[1]);
+                        listView3.Items.Add(lvi);
+                    }
+                    break;
+                case 3:
+                    report = ReportsBuilder.GetImplementationsByServices(_root, dtpFromDate.Value, dtpToDate.Value);
+                    listView4.Items.Clear();
+                    foreach (var row in report.ReportRows)
+                    {
+                        var lvi = new ListViewItem(row.Items[0]);
+                        lvi.SubItems.Add(row.Items[1]);
+                        listView4.Items.Add(lvi);
+                    }
+                    break;
+                case 4:
+                    report = ReportsBuilder.GetPayByEmployees(_root, dtpFromDate.Value, dtpToDate.Value);
+                    listView5.Items.Clear();
+                    foreach (var row in report.ReportRows)
+                    {
+                        var lvi = new ListViewItem(row.Items[0]);
+                        lvi.SubItems.Add(row.Items[1]);
+                        lvi.SubItems.Add(row.Items[2]);
+                        lvi.SubItems.Add(row.Items[3]);
+                        listView5.Items.Add(lvi);
+                    }
+                    break;
             }
         }
     }
