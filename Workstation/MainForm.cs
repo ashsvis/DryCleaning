@@ -61,6 +61,8 @@ namespace Workstation
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaverLoader.SaveToFile(Path.ChangeExtension(Application.ExecutablePath, ".bin"), _root);
+            e.Cancel = MessageBox.Show(this, "Закрыть приложение?", "Выход", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) != DialogResult.Yes;
         }
 
         private void tsmiServices_Click(object sender, EventArgs e)
