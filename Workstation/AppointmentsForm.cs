@@ -1,4 +1,5 @@
 ﻿using Model;
+using System.IO;
 using System.Windows.Forms;
 using ViewGenerator;
 
@@ -7,6 +8,7 @@ namespace Workstation
     public partial class AppointmentsForm : Form
     {
         GridPanel gridPanel;
+        Appointment _appointment;
 
         public AppointmentsForm(Root root)
         {
@@ -18,11 +20,11 @@ namespace Workstation
 
         private void GridPanel_GridSelectedChanged(object obj)
         {
-            if (obj != null)
+            _appointment = (Appointment)obj;
+            if (_appointment != null)
             {
-                var appointment = (Appointment)obj;
-                tbDescription.Text = appointment.Description;
-                tbJobDescription.Text = appointment.JobDescription;
+                tbDescription.Text = _appointment.Description;
+                tbJobDescription.Text = _appointment.JobDescription;
                 btnSaveJobDescriptionToFile.Enabled = true;
             }
             else
@@ -37,6 +39,18 @@ namespace Workstation
         {
             e.Cancel = true;
             Hide();
+        }
+
+        private void btnSaveJobDescriptionToFile_Click(object sender, System.EventArgs e)
+        {
+            if (_appointment == null) return;
+            var dlg = new SaveFileDialog
+            {
+                Filter = @"Текстовый файл|*.txt",
+                FileName = $"{_appointment.Name} (должностная инструкция).txt"
+            };
+            if (dlg.ShowDialog() != DialogResult.OK) return;
+            File.WriteAllText(dlg.FileName, _appointment.JobDescription);
         }
     }
 }

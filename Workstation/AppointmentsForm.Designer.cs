@@ -34,8 +34,8 @@
             this.btnSaveJobDescriptionToFile = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tbDescription = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tbJobDescription = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -85,6 +85,7 @@
             this.btnSaveJobDescriptionToFile.Text = "Сохранить инструкцию в файл";
             this.btnSaveJobDescriptionToFile.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSaveJobDescriptionToFile.UseVisualStyleBackColor = false;
+            this.btnSaveJobDescriptionToFile.Click += new System.EventHandler(this.btnSaveJobDescriptionToFile_Click);
             // 
             // tabControl1
             // 
@@ -108,17 +109,6 @@
             this.tabPage1.Text = "Описание должности";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.tbJobDescription);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(590, 235);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Должностная инструкция";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // tbDescription
             // 
             this.tbDescription.BackColor = System.Drawing.SystemColors.Window;
@@ -131,6 +121,17 @@
             this.tbDescription.Size = new System.Drawing.Size(584, 229);
             this.tbDescription.TabIndex = 0;
             this.tbDescription.WordWrap = false;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.tbJobDescription);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(590, 235);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Должностная инструкция";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tbJobDescription
             // 
