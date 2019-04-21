@@ -21,7 +21,7 @@ namespace Workstation
         public static UsersForm UsersForm;
         public static StatisticsForm StatisticsForm;
 
-        private bool _loggedIn = true; // не забудь перевести в false
+        private bool _loggedIn = false; // не забудь перевести в false!
 
         public MainForm()
         {

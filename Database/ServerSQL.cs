@@ -131,7 +131,16 @@ namespace Database
                                 PropertyInfo piInstance = item.GetType().GetProperty(propName);
                                 var type = piInstance.PropertyType;
                                 var value = reader.GetValue(col);
-                                if (type == typeof(DateTime))
+                                if (table == "Appointments" && (propName == "Description" || propName == "JobDescription"))
+                                {
+                                    piInstance.SetValue(item, reader.GetString(col));
+                                }
+                                else if (table == "Employees" && propName == "Photo")
+                                {
+                                    if (!reader.IsDBNull(col))
+                                        piInstance.SetValue(item, (byte[])value);
+                                }
+                                else if (type == typeof(DateTime))
                                     piInstance.SetValue(item, Convert.ToDateTime(value));
                                 else if (type == typeof(bool))
                                     piInstance.SetValue(item, Convert.ToBoolean(value));
@@ -144,6 +153,7 @@ namespace Database
                                     piInstance.SetValue(item, Convert.ToString(value));
                                 else if (type == typeof(Guid))
                                     piInstance.SetValue(item, Guid.Parse(Convert.ToString(value)));
+                                
                             }
                             // формируем массив значений параметров для передачи при вызове метода
                             object[] arguments = { item };
