@@ -74,6 +74,11 @@
     <Compile Include="ViewGenerator\TableFilterableAttribute.cs" />
     <Compile Include="ViewGenerator\TextSizeAttribute.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Database\Database.csproj">
+      <Project>{5dede3e7-af08-4339-a652-58b9a1c7fcf2}</Project>
+      <Name>Database</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

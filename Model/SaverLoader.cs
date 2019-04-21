@@ -1,5 +1,9 @@
-﻿using System.IO;
+﻿using Database;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.IO.Compression;
+using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Model
@@ -37,6 +41,55 @@ namespace Model
                 var formatter = new BinaryFormatter();
                 formatter.Serialize(zip, root);
             }
+        }
+
+        public static bool StoreTables(Root root)
+        {
+            var database = "drycleaner";
+            if (!DatabaseSettings.CreateDatabase(database)) return false;
+
+            foreach (var tableName in root.GetTableNames())
+            {
+                var tableInfo = root.GetTableInfo(tableName);
+                var type = tableInfo.Item.GetType();
+                MemberInfo[] m = type.GetProperties();
+                var list = new List<string>();
+                foreach (var info in m)
+                {
+                    var prop = type.GetProperty(info.Name);
+                    var typeName = prop.PropertyType.ToString();
+                    string coltype;
+                    switch (typeName)
+                    {
+                        case "System.Guid":
+                            coltype = "NVARCHAR( 50 )";
+                            break;
+                        default:
+                            coltype = "NVARCHAR( 250 )";
+                            break;
+                    }
+                    if (tableName == "Appointments" && 
+                        (info.Name == "Description" || info.Name == "JobDescription"))
+                        coltype = "LONGBLOB";
+                    list.Add($"`{info.Name}` {coltype} NOT NULL");
+                }
+                var createSQL = $"CREATE TABLE IF NOT EXISTS `{tableName}` ({string.Join(", ", list)}) ENGINE = MYISAM";
+                DatabaseSettings.CreateTable(database, createSQL);
+                // получаем ссылку на коллекцию
+                var collection = (IEnumerable<object>)tableInfo.Table;
+                foreach (var item in collection)
+                {
+                    type = item.GetType();
+                    m = type.GetProperties();
+                    foreach (var info in m)
+                    {
+                        var prop = type.GetProperty(info.Name);
+
+                    }
+                }
+
+            }
+            return true;
         }
     }
 }

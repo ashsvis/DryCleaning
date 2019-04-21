@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Database;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -21,39 +22,45 @@ namespace Model
         public Root()
         {
             RegistryTables();
+            if (DatabaseSettings.CreateDatabase("drycleaner"))
+            {
+                //DatabaseSettings.RestoreTables("drycleaner");
+            }
         }
 
         public void RegistryTables()
         {
+            Tables.Clear();
+
             if (Services == null) Services = new Services();
-            RegistryTable("Ассортимент", new Service(), Services);
+            RegistryTable("Services", new Service(), Services);
 
             if (SentenceTypes == null) SentenceTypes = new SentenceTypes();
-            RegistryTable("Типы предложений", new SentenceType(), SentenceTypes);
+            RegistryTable("SentenceTypes", new SentenceType(), SentenceTypes);
 
             if (Sentences == null) Sentences = new Sentences();
-            RegistryTable("Предложения", new Sentence(), Sentences);
+            RegistryTable("Sentences", new Sentence(), Sentences);
 
             if (Implementations == null) Implementations = new Implementations();
-            RegistryTable("Реализации", new Implementation(), Implementations);
+            RegistryTable("Implementations", new Implementation(), Implementations);
 
             if (Employees == null) Employees = new Employees();
-            RegistryTable("Список сотрудников", new Employee(), Employees);
+            RegistryTable("Employees", new Employee(), Employees);
 
             if (Clients == null) Clients = new Clients();
-            RegistryTable("Клиенты", new Client(), Clients);
+            RegistryTable("Clients", new Client(), Clients);
 
             if (Categories == null) Categories = new Categories();
-            RegistryTable("Категории", new Category(), Categories);
+            RegistryTable("Categories", new Category(), Categories);
 
             if (Appointments == null) Appointments = new Appointments();
-            RegistryTable("Должности", new Appointment(), Appointments);
+            RegistryTable("Appointments", new Appointment(), Appointments);
 
             if (Genders == null) Genders = new Genders();
-            RegistryTable("Пол", new Gender(), Genders);
+            RegistryTable("Genders", new Gender(), Genders);
 
             if (Users == null) Users = new Users();
-            RegistryTable("Пользователи", new User(), Users);
+            RegistryTable("Users", new User(), Users);
 
         }
 
