@@ -71,7 +71,7 @@ namespace Database
             return false;
         }
 
-        public static bool UpdateTable(string database, string table, Dictionary<string, string> columns)
+        public static bool UpdateTable(string database, string table, Dictionary<string, object> columns)
         {
             using (ServerSQL server = new ServerSQL(true, database))
             {

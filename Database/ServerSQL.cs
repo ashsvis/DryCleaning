@@ -58,13 +58,18 @@ namespace Database
 
         public string CurrentDatabase { get { return databaseName; } }
 
-        public bool ExecSQL(string SQL)
+        public bool ExecSQL(string SQL, Dictionary<string, object> columns = null)
         {
             bool result = false;
             using (MySqlCommand command = new MySqlCommand(SQL, myConnection))
             {
                 try
                 {
+                    if (columns != null)
+                    {
+                        foreach (var key in columns.Keys)
+                            command.Parameters.AddWithValue($"@{key}", columns[key]);
+                    }
                     command.ExecuteNonQuery();
                     lasterrorString = String.Empty;
                 }
@@ -77,7 +82,7 @@ namespace Database
             return result;
         }
 
-        public void InsertInto(string table, Dictionary<string, string> columns)
+        public void InsertInto(string table, Dictionary<string, object> columns)
         {
             // формирование запроса для изменения
             var props = new List<string>();
@@ -86,28 +91,16 @@ namespace Database
             {
                 props.Add($"`{key}`");
                 var value = columns[key];
-                //if (value.Length > 250) value = value.Substring(0, 250);
-                values.Add($"'{value}'");
+                values.Add($"@{key}");
             }
             var sql = $"INSERT INTO `{table}` ({string.Join(",", props)}) VALUES ({string.Join(",", values)})";
-            ExecSQL(sql);
+            ExecSQL(sql, columns);
         }
 
         public static bool HostIsLocalhost()
         {
             string host = Properties.Settings.Default.Host.ToLower();
             return host.Equals("localhost") || host.Equals("127.0.0.1");
-        }
-
-        public void WriteTableValue(string tableName, string[] props, string[] values)
-        {
-            if (serverConnected)
-            {
-                var propnames = string.Join("`,`", props);
-                var propvalues = string.Join("','", values);
-                var SQL = $"replace into `{tableName}` (`{propnames}`) values ('{propvalues}')";
-                ExecSQL(SQL);
-            }
         }
 
 
