@@ -1,0 +1,56 @@
+CREATE DATABASE  IF NOT EXISTS `drycleaner` /*!40100 DEFAULT CHARACTER SET cp1251 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `drycleaner`;
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+--
+-- Host: localhost    Database: drycleaner
+-- ------------------------------------------------------
+-- Server version	8.0.32
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `implementations`
+--
+
+DROP TABLE IF EXISTS `implementations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `implementations` (
+  `IdImplementation` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `IdSentence` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `IdClient` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `IdEmployee` varchar(50) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `ImplementationDate` varchar(250) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL,
+  `Notes` varchar(250) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `implementations`
+--
+
+LOCK TABLES `implementations` WRITE;
+/*!40000 ALTER TABLE `implementations` DISABLE KEYS */;
+INSERT INTO `implementations` VALUES ('786d46aa-ea11-4c48-9dd0-bb981d110409','28297608-dbc5-4e3f-9dce-63224c16eab8','9997e888-c7e1-4f27-9b1c-e9f680796c7d','31b729e2-001b-48a3-8196-4553c588dfc7','2019-04-19 15:15:58',''),('8f936c17-3e62-470a-b16d-267df037d107','38e60379-7736-46cb-b681-786cba077314','9502121f-9ab1-444f-8233-49fd997b8cd7','e302f304-a4c2-4f5c-976e-5d5a6f9aa479','2019-04-19 15:18:22',''),('93d2efda-1d1a-4a67-a07a-b91ece872597','5f75f315-75dd-4484-82f4-4b695cdb0f8f','996c0617-51e5-4925-946d-d513cb180a9e','428441f5-2178-484b-a69f-3b0cd833b42b','2019-04-19 15:19:32',''),('7c9e614f-5e44-4436-8c66-2deabaed21f4','28297608-dbc5-4e3f-9dce-63224c16eab8','9502121f-9ab1-444f-8233-49fd997b8cd7','428441f5-2178-484b-a69f-3b0cd833b42b','2019-04-19 19:42:52',''),('7af82e4b-ceb0-4bc5-8b95-e708c15bd527','ace150fa-3f84-4790-9bb7-97fcfcb8f9a1','9502121f-9ab1-444f-8233-49fd997b8cd7','60b6cc2f-c8ee-43e1-9038-ba0af9acf1df','2019-04-19 19:49:48',''),('84f742cf-ca4d-4e10-81c9-9b3fbe50ed14','38e60379-7736-46cb-b681-786cba077314','996c0617-51e5-4925-946d-d513cb180a9e','e302f304-a4c2-4f5c-976e-5d5a6f9aa479','2019-04-20 13:11:01',''),('563d2e0e-08fe-40fe-9537-ec14ea415fa4','5f75f315-75dd-4484-82f4-4b695cdb0f8f','9997e888-c7e1-4f27-9b1c-e9f680796c7d','31b729e2-001b-48a3-8196-4553c588dfc7','2019-04-21 12:25:35','');
+/*!40000 ALTER TABLE `implementations` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-05-03 22:01:50
